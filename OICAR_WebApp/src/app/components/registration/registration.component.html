@@ -1,0 +1,71 @@
+<h2>Registration</h2>
+<form #f="ngForm" [formGroup]="form" (ngSubmit)="submit()">
+    <!-- First name -->
+    <div class="form-floating my-3">
+        <input  id="firstName" name="firstName" formControlName="firstName" type="text" class="form-control">
+        <label for="firstName">First name</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'firstName')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'firstName', 'required')">
+            First name is required.
+        </div>
+    </div>
+
+    <!-- Last name -->
+    <div class="form-floating my-3">
+        <input  id="lastName" name="lastName" formControlName="lastName" type="text" class="form-control">
+        <label for="lastName">Last name</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'lastName')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'lastName', 'required')">
+            Last name is required.
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-floating my-3">
+        <input  id="email" name="email" formControlName="email" type="email" class="form-control">
+        <label for="email">Email</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'email')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'required')">
+            Email is required.
+        </div>
+        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'email')">
+            Email format is invalid.
+        </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-floating my-3">
+        <input  id="password" name="password" formControlName="password" type="password" class="form-control">
+        <label for="password">Password</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'password')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'password', 'required')">
+            Password is required.
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button 
+        type="submit"
+        class="btn btn-secondary mb-3" 
+        [disabled]="!form.valid">
+        Submit
+    </button>
+
+    <!-- Info message - unsuccessful registration -->
+    <div *ngIf="f.submitted && !successfulRegistration">
+        <label formControlName="infoMsgUnsuccessful" class="alert alert-danger">
+            Something went wrong. Registration unsuccessful. :(
+        </label>
+    </div>
+
+    <!-- Info message - successful registration -->
+    <div *ngIf="f.submitted && successfulRegistration">
+        <label formControlName="infoMsgSuccessful" class="alert alert-success">
+            Registration successful. You will be redirected to your profile shortly.
+        </label>
+    </div>
+</form>

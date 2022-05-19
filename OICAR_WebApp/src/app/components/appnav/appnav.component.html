@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">{{title}}</a>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li *ngIf="!authService.userLoggedIn()" class="nav-item">
+                    <a routerLink="/registration" class="nav-link" aria-current="page">Registration</a>
+                </li>
+                <li *ngIf="!authService.userLoggedIn()" class="nav-item">
+                    <a routerLink="/login" class="nav-link">Login</a>
+                </li>
+                <li *ngIf="authService.userLoggedIn()" class="nav-item">
+                    <a routerLink="/profile/{{authService.getLoggedUserId()}}"  class="nav-link">Profile</a>
+                </li>
+                <li *ngIf="authService.userLoggedIn()" class="nav-item">
+                    <a (click)="openLogoutDialog()" class="nav-link" role="button">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
