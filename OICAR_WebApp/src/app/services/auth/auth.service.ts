@@ -30,15 +30,13 @@ export class AuthService {
 
   authenticateUser(email: string, password: string): Observable<Number> {
     // simulate user authenticated - delete after inspection
-    //return of(1);
+    // return of(1);
     //
 
     return this.http.post<Number>(`${ GlobalConstants.authUrl }?email=${ email }&passwordHash=${ password }`, null, this.httpOptions).pipe(
       tap((userId: Number) => {
         if(userId != 0){
           console.log(`Successful authentication of user, user id=${userId}`);
-          // call on call site
-          // sessionStorage.setItem(GlobalConstants.userId, userId.toString());
         } else {
           console.log(`Unsuccessful authentication of user.`);
         }

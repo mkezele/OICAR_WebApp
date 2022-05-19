@@ -1,1 +1,50 @@
-<p>login works!</p>
+<h2>Login</h2>
+<form #f="ngForm" [formGroup]="form" (ngSubmit)="submit()">
+
+    <!-- Email -->
+    <div class="form-floating my-3">
+        <input  id="email" name="email" formControlName="email" type="email" class="form-control">
+        <label for="email">Email</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'email')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'required')">
+            Email is required.
+        </div>
+        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'email')">
+            Email format is invalid.
+        </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-floating my-3">
+        <input  id="password" name="password" formControlName="password" type="password" class="form-control">
+        <label for="password">Password</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'password')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'password', 'required')">
+            Password is required.
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button 
+        type="submit"
+        class="btn btn-secondary mb-3" 
+        [disabled]="!form.valid">
+        Submit
+    </button>
+
+    <!-- Info message - unsuccessful authentication -->
+    <div *ngIf="f.submitted && !successfulAuthentication">
+        <label formControlName="infoMsgUnsuccessful" class="alert alert-danger">
+            Something went wrong. Authentication unsuccessful. :(
+        </label>
+    </div>
+
+    <!-- Info message - successful authentication -->
+    <div *ngIf="f.submitted && successfulAuthentication">
+        <label formControlName="infoMsgSuccessful" class="alert alert-success">
+            Authentication successful. You will be redirected to your profile shortly.
+        </label>
+    </div>
+</form>

@@ -73,10 +73,10 @@ export class RegistrationComponent implements OnInit {
 
     this.userService.addUser(newUser)
       .subscribe(user => {
-        if(user.idAppUser != 0){
+        if(user != undefined && user.idAppUser != 0){
           this.successfulRegistration = true;
           sessionStorage.setItem(GlobalConstants.userId, user.idAppUser.toString());
-          setTimeout(() => { this.router.navigate([`/profile/${user.idAppUser}`]); }, this.timeout)
+          setTimeout(() => { this.router.navigate([`/profile/${user.idAppUser}`]); }, this.timeout);
         }
       });
   }
