@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -18,6 +19,11 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'profile/edit/:id', 
+    component: ProfileEditComponent,
+    canActivate: [AuthGuard] 
+ },
   { 
     path: '**', component: PageNotFoundComponent 
   },

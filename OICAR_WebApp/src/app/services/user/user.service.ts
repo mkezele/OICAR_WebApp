@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ObjectMapper } from 'json-object-mapper';
 import { catchError, Observable, of, tap } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { GlobalConstants } from '../../common/global-constants';
 import { ChatMessage } from '../../models/chat-message';
 import { ProjectPost } from '../../models/project-post';
@@ -52,7 +53,7 @@ export class UserService {
     // return of(this.newUser);
     //
 
-    // TODO: deserialize object
+    // TODO: deserialize object ?
     return this.http.get<User>(`${GlobalConstants.usersUrl}/${id}`).pipe(
       tap(user => {
         console.log(`fetched user id=${user.idAppUser}`);
@@ -74,4 +75,29 @@ export class UserService {
       catchError(this.errorService.handleError<User>('addUser'))
     );
   }
+
+    /** PUT: update the user on the server */
+    updateUser(user: User): Observable<User> {
+      // simulate user updated - delete after inspection
+      // return of(this.newUser);
+      //
+  
+      return this.http.put<User>(`${GlobalConstants.usersUrl}/${user.idAppUser}`, ObjectMapper.serialize(user), this.httpOptions).pipe(
+        tap(updatedUser => console.log(`updated user id=${updatedUser.idAppUser}`)),
+        catchError(this.errorService.handleError<User>('updateUser'))
+      );
+    }
+
+    /** DELETE: delete the user from the server */
+    deleteUser(id: number): Observable<Boolean> {
+      // simulate user deleted - delete after inspection
+      // return of(true);
+      //
+
+      const url = `${GlobalConstants.usersUrl}/${id}`;
+      return this.http.delete<Boolean>(url, this.httpOptions).pipe(
+        tap(_ => console.log(`deleted user id=${id}`)),
+        catchError(this.errorService.handleError<Boolean>('deleteUser'))
+      );
+    }
 }

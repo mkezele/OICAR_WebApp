@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppnavComponent } from './components/appnav/appnav.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     DialogComponent,
     AppnavComponent,
     PageNotFoundComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

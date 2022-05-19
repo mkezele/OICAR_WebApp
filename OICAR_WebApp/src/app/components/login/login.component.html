@@ -36,14 +36,14 @@
 
     <!-- Info message - unsuccessful authentication -->
     <div *ngIf="f.submitted && !successfulAuthentication">
-        <label formControlName="infoMsgUnsuccessful" class="alert alert-danger">
+        <label class="alert alert-danger">
             Something went wrong. Authentication unsuccessful. :(
         </label>
     </div>
 
     <!-- Info message - successful authentication -->
     <div *ngIf="f.submitted && successfulAuthentication">
-        <label formControlName="infoMsgSuccessful" class="alert alert-success">
+        <label class="alert alert-success">
             Authentication successful. You will be redirected to your profile shortly.
         </label>
     </div>

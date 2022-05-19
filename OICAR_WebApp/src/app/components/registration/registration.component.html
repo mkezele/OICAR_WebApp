@@ -57,14 +57,14 @@
 
     <!-- Info message - unsuccessful registration -->
     <div *ngIf="f.submitted && !successfulRegistration">
-        <label formControlName="infoMsgUnsuccessful" class="alert alert-danger">
+        <label class="alert alert-danger">
             Something went wrong. Registration unsuccessful. :(
         </label>
     </div>
 
     <!-- Info message - successful registration -->
     <div *ngIf="f.submitted && successfulRegistration">
-        <label formControlName="infoMsgSuccessful" class="alert alert-success">
+        <label class="alert alert-success">
             Registration successful. You will be redirected to your profile shortly.
         </label>
     </div>

@@ -1,0 +1,100 @@
+<h2>Registration</h2>
+<form #f="ngForm" [formGroup]="form" (ngSubmit)="submit()">
+    <!-- Email -->
+    <div class="form-floating my-3">
+        <input  id="email" name="email" formControlName="email" type="email" class="form-control" readonly>
+        <label for="email">Email</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'email')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'required')">
+            Email is required.
+        </div>
+        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'email')">
+            Email format is invalid.
+        </div>
+    </div>
+
+    <!-- First name -->
+    <div class="form-floating my-3">
+        <input  id="firstName" name="firstName" formControlName="firstName" type="text" class="form-control">
+        <label for="firstName">First name</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'firstName')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'firstName', 'required')">
+            First name is required.
+        </div>
+    </div>
+
+    <!-- Last name -->
+    <div class="form-floating my-3">
+        <input  id="lastName" name="lastName" formControlName="lastName" type="text" class="form-control">
+        <label for="lastName">Last name</label>
+    </div>
+    <div *ngIf="formValidationService.fieldInvalid(form, 'lastName')" class="alert alert-danger">
+        <div *ngIf="formValidationService.fieldHasError(form, 'lastName', 'required')">
+            Last name is required.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <!-- Submit button -->
+        <button 
+            type="submit"
+            class="btn btn-dark" 
+            (click)="submit()"
+            [disabled]="!form.valid || !formValuesChanged">
+            Submit
+        </button>
+        <!-- Change password button -->
+        <button 
+            type="button"
+            class="btn btn-primary  mx-3"
+            (click)="changePassword()" >
+            Change password
+        </button>
+        <!-- Delete profile button -->
+        <button 
+            type="button"
+            class="btn btn-danger"
+            (click)="openDeleteProfileDialog()" >
+            Delete profile
+        </button>
+    </div>
+
+    <div>
+        <button 
+        type="button" 
+        class="btn btn-warning" 
+        (click)="goBack()">
+            Go back
+        </button>
+    </div>
+
+    <!-- Info message - unsuccessful update -->
+    <div *ngIf="f.submitted && !successfulUpdate">
+        <label class="alert alert-danger">
+            Something went wrong. Update unsuccessful. :(
+        </label>
+    </div>
+
+    <!-- Info message - successful update -->
+    <div *ngIf="f.submitted && successfulUpdate">
+        <label class="alert alert-success">
+            Update successful. You will be redirected to your profile shortly.
+        </label>
+    </div>
+
+    <!-- Info message - unsuccessful profile deletion -->
+    <div *ngIf="successfulDeletion != undefined && !successfulDeletion">
+        <label class="alert alert-success">
+            Something went wrong. Profile deletion unsuccessful. :(
+        </label>
+    </div>
+
+    <!-- Info message - successful profile deletion -->
+    <div *ngIf="successfulDeletion != undefined && successfulDeletion">
+        <label class="alert alert-success">
+            Profile deleted. You will be redirected to registration page shortly.
+        </label>
+    </div>
+</form>
