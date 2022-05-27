@@ -15,6 +15,8 @@ import { AppnavComponent } from './components/appnav/appnav.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon'; 
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ProfileEditComponent } from './components/profile-edit/profile-edit.com
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

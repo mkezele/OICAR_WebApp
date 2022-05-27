@@ -16,8 +16,8 @@ export class AppnavComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private router: Router, 
     public dialog: MatDialog,
+    private router: Router, 
   ) { }
 
   ngOnInit(): void {

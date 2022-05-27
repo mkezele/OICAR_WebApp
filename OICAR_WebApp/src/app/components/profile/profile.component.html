@@ -1,7 +1,9 @@
-<h2>Profile</h2>
-<h3>Hello {{user?.firstName}}!</h3>
-<a routerLink="../edit/{{user?.idAppUser}}" class="link">Edit profile</a>
-
-<div class="mt-3">
-    TODO: List of posts...
+<div class="d-flex flex-column align-items-center rounded p-4 bg-light">
+    <h2>Profile</h2>
+    <h3>Hello {{user?.firstName}}!</h3>
+    <button routerLink="../edit/{{user?.idappUser}}" class="btn btn-dark">Edit profile</button>
+    
+    <div class="mt-3">
+        TODO: List of posts...
+    </div>
 </div>

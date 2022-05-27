@@ -2,22 +2,12 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
-import { ChatMessage } from 'src/app/models/chat-message';
-import { ProjectPost } from 'src/app/models/project-post';
-import { Report } from 'src/app/models/report';
-import { Review } from 'src/app/models/review';
-import { ServicePost } from 'src/app/models/service-post';
-import { Suspension } from 'src/app/models/suspension';
-import { User } from 'src/app/models/user';
 import { ErrorService } from '../error/error.service';
-import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  private user: User | undefined = undefined;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,20 +15,18 @@ export class AuthService {
 
   constructor(
     private http: HttpClient, 
-    private errorService: ErrorService, 
-    private userService: UserService) { }
+    private errorService: ErrorService,) { }
 
   authenticateUser(email: string, password: string): Observable<Number> {
-    // simulate user authenticated - delete after inspection
-    // return of(1);
-    //
-
+    // simulate user authenticated
+    return of(1018);
+    
     return this.http.post<Number>(`${ GlobalConstants.authUrl }?email=${ email }&passwordHash=${ password }`, null, this.httpOptions).pipe(
       tap((userId: Number) => {
-        if(userId != 0){
-          console.log(`Successful authentication of user, user id=${userId}`);
+        if(userId > 0){
+          console.log(`User authenticated, id=${userId}.`);
         } else {
-          console.log(`Unsuccessful authentication of user.`);
+          console.log(`User not authenticated.`);
         }
       }),
       catchError(this.errorService.handleError<Number>('authenticateUser'))
@@ -55,7 +43,6 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem(GlobalConstants.userId);
-    this.user = undefined;
   }
 
 }

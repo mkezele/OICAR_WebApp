@@ -9,8 +9,8 @@ import { DialogData } from 'src/app/models/dialog-data';
 })
 export class DialogComponent implements OnInit {
 
-  title = '';
-  text = '';
+  public title = '';
+  public text = '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }

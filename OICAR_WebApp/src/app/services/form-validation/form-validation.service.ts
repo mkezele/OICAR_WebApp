@@ -16,4 +16,12 @@ export class FormValidationService {
   fieldHasError(form: FormGroup, field: string, error: string): boolean{
       return form.get(field)?.hasError(error) ?? false;
   }
+
+  fieldInvalidAndHasError(form: FormGroup, field: string, error: string): boolean{
+    return this.fieldInvalid(form, field) && this.fieldHasError(form, field, error);
+  }
+
+  fieldEmpty(form: FormGroup, field: string): boolean{
+    return form.get(field)?.value == "" ?? false;
+  }
 }

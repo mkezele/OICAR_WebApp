@@ -1,6 +1,6 @@
 export class GlobalConstants {
 
-    public static appTitle: string = "OICAR Web App";
+    public static appTitle: string = "TeamUp";
     
     // api endpoints
     private static scheme = 'http://';

@@ -8,7 +8,7 @@ import { Suspension } from "./suspension";
 
 export class User {  
     @JsonProperty({ name: "idappUser" })
-    private _idAppUser: number;
+    private _idappUser: number;
 
     @JsonProperty({ name: "firstName" })
     private _firstName: string;
@@ -72,7 +72,7 @@ export class User {
         reviewReviewingUsers: Review[],
         servicePosts: ServicePost[],
         suspensions: Suspension[]) {
-            this._idAppUser = idAppUser;
+            this._idappUser = idAppUser;
             this._firstName = firstName;
             this._lastName = lastName;
             this._email = email;
@@ -91,8 +91,8 @@ export class User {
     }
       
     // getters
-    get idAppUser(): number {
-        return this._idAppUser;
+    get idappUser(): number {
+        return this._idappUser;
     }
 
     get firstName(): string {
@@ -156,11 +156,15 @@ export class User {
     }
 
     // setters
+    set idappUser(idAppUser: number) {
+        this._idappUser = idAppUser;
+    }
+
     set firstName(firstName: string) {
-    this._firstName = firstName;
+        this._firstName = firstName;
     }
 
     set lastName(lastName: string) {
-    this._lastName = lastName;
+        this._lastName = lastName;
     }
 }

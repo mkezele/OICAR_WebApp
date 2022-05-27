@@ -13,17 +13,19 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
-  public successfulAuthentication = false;
+  public form: FormGroup;
+  public successfulAuthentication: boolean | undefined = undefined;
+  public showPassword = false;
+
   private timeout = 1000;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
     public formValidationService: FormValidationService,
   ) { 
-    this.form = this.fb.group({
+    this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
@@ -34,16 +36,23 @@ export class LoginComponent implements OnInit {
 
   submit(){
     if(this.form.valid){
-      const val = this.form.value;
-      this.authService.authenticateUser(val.email.trim(), val.password.trim()).subscribe(userId => {
-        if(userId != undefined && userId != 0){
-          console.log('user id: ' + userId)
+      let email = this.form.value.email.trim();
+      let passwordHash = btoa(this.form.value.password.trim());
+
+      this.authService.authenticateUser(email, passwordHash).subscribe(userId => {
+        if(userId > 0){
           this.successfulAuthentication = true;
           sessionStorage.setItem(GlobalConstants.userId, userId.toString());
           setTimeout(() => { this.router.navigate([`/profile/${userId}`]); }, this.timeout);
+        } else {
+          this.successfulAuthentication = false;
         }
       });
     }
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
 
 }

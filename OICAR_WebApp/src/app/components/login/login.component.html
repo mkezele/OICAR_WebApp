@@ -1,50 +1,74 @@
-<h2>Login</h2>
-<form #f="ngForm" [formGroup]="form" (ngSubmit)="submit()">
-
-    <!-- Email -->
-    <div class="form-floating my-3">
-        <input  id="email" name="email" formControlName="email" type="email" class="form-control">
-        <label for="email">Email</label>
-    </div>
-    <div *ngIf="formValidationService.fieldInvalid(form, 'email')" class="alert alert-danger">
-        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'required')">
-            Email is required.
+<div class="contentWidth centerVertically m-auto d-flex flex-column align-items-center rounded p-4 bg-light">
+    <h2 class="w-100 text-center border-bottom">Login</h2>
+    <form #f="ngForm" [formGroup]="form" (ngSubmit)="submit()" class="w-100">
+        <!-- Email -->
+        <div class="form-floating mt-3">
+            <input 
+                id="email" 
+                name="email" 
+                formControlName="email" 
+                type="email" 
+                class="form-control"
+                autofocus
+                [ngClass]="{'border border-danger': formValidationService.fieldInvalid(form, 'email')}">
+            <label for="email">Email</label>
         </div>
-        <div *ngIf="formValidationService.fieldHasError(form, 'email', 'email')">
-            Email format is invalid.
+        <div 
+            *ngIf="formValidationService.fieldInvalidAndHasError(form, 'email', 'required')"
+            class="mt-1 text-danger">
+                Email is required.
         </div>
-    </div>
-
-    <!-- Password -->
-    <div class="form-floating my-3">
-        <input  id="password" name="password" formControlName="password" type="password" class="form-control">
-        <label for="password">Password</label>
-    </div>
-    <div *ngIf="formValidationService.fieldInvalid(form, 'password')" class="alert alert-danger">
-        <div *ngIf="formValidationService.fieldHasError(form, 'password', 'required')">
-            Password is required.
+        <div 
+            *ngIf="formValidationService.fieldInvalidAndHasError(form, 'email', 'email')"
+            class="mt-1 text-danger">
+                Email format is invalid.
         </div>
-    </div>
-
-    <!-- Submit button -->
-    <button 
-        type="submit"
-        class="btn btn-secondary mb-3" 
-        [disabled]="!form.valid">
-        Submit
-    </button>
-
-    <!-- Info message - unsuccessful authentication -->
-    <div *ngIf="f.submitted && !successfulAuthentication">
-        <label class="alert alert-danger">
+    
+        <!-- Password -->
+        <div class="d-flex flex-row align-items-center mt-3">
+            <div class="form-floating w-100">
+                <input 
+                    id="password" 
+                    name="password" 
+                    formControlName="password" 
+                    [type]="showPassword ? 'text' : 'password'"
+                    class="form-control"
+                    [ngClass]="{'border border-danger': formValidationService.fieldInvalid(form, 'password')}">
+                <label for="password">Password</label>
+            </div>
+            <button 
+                type="button"
+                class="btn btn-dark mx-3" 
+                [textContent]="this.showPassword ? 'Hide' : 'Show'"
+                (click)="toggleShowPassword()">
+            </button>
+        </div>
+        <div 
+            *ngIf="formValidationService.fieldInvalidAndHasError(form, 'password', 'required')"
+            class="mt-1 text-danger">
+                Password is required.
+        </div>
+    
+        <div class="d-flex flex-row align-items-center mt-3">
+            <!-- Submit button -->
+            <button 
+                type="submit"
+                class="btn btn-dark" 
+                [disabled]="!form.valid">
+                    Submit
+            </button>
+            <!-- Login link -->
+            <button routerLink="/registration" type="button" class="btn btn-link mx-2">Registration</button>
+        </div>
+    
+        <!-- Info message - unsuccessful authentication -->
+        <div *ngIf="f.submitted && successfulAuthentication != undefined && !successfulAuthentication" class="alert alert-danger mt-3" role="alert">
             Something went wrong. Authentication unsuccessful. :(
-        </label>
-    </div>
-
-    <!-- Info message - successful authentication -->
-    <div *ngIf="f.submitted && successfulAuthentication">
-        <label class="alert alert-success">
+        </div>
+    
+        <!-- Info message - successful authentication -->
+        <div *ngIf="f.submitted && successfulAuthentication != undefined && successfulAuthentication" class="alert alert-success mt-3" role="alert">
             Authentication successful. You will be redirected to your profile shortly.
-        </label>
-    </div>
-</form>
+        </div>
+    </form>
+</div>
