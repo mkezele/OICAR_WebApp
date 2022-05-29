@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'profile/edit/:id', 
     component: ProfileEditComponent,
+    canActivate: [AuthGuard] 
+  },
+  {
+    path: 'create-post/:id', 
+    component: CreatePostComponent,
     canActivate: [AuthGuard] 
  },
   { 

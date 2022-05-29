@@ -16,7 +16,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon'; 
+import {MatIconModule} from '@angular/material/icon';
+import { CreatePostComponent } from './create-post/create-post.component'; 
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input'; 
+import {MatRadioModule} from '@angular/material/radio'; 
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button'; 
 
 @NgModule({
   declarations: [
@@ -28,6 +34,7 @@ import {MatIconModule} from '@angular/material/icon';
     AppnavComponent,
     PageNotFoundComponent,
     ProfileEditComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,13 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
