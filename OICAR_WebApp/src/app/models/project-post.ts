@@ -126,4 +126,57 @@ export class ProjectPost {
         return this._category;
     }
 
+    // setters
+    set idprojectPost(idprojectPost: number) {
+        this._idprojectPost = idprojectPost;
+    }
+    
+    set appUserId(appUserId: number) {
+        this._appUserId = appUserId;
+    }
+
+    set categoryId(categoryId: number) {
+        this._categoryId = categoryId;
+    }
+
+    set active(active: boolean) {
+        this._active = active;
+    }
+
+    set title(title: string) {
+        this._title = title;
+    }
+
+    set comment(comment: string) {
+        this._comment = comment;
+    }
+
+    set place(place: string) {
+        this._place = place;
+    }
+
+    set dateOfCreation(dateOfCreation: Date) {
+        this._dateOfCreation = dateOfCreation;
+    }
+    
+    set durationInMonths(durationInMonths: number) {
+        this._durationInMonths = durationInMonths;
+    }
+
+    set numberOfTeammates(numberOfTeammates: number) {
+        this._numberOfTeammates = numberOfTeammates;
+    }
+
+    set deleted(deleted: boolean) {
+        this._deleted = deleted;
+    }
+
+    set appUser(appUser: User) {
+        this._appUser = appUser;
+    }
+
+    set category(category: Category) {
+        this._category = category;
+    }
+
 }

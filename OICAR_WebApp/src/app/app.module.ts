@@ -17,12 +17,20 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import { CreatePostComponent } from './create-post/create-post.component'; 
+import { CreatePostComponent } from './components/create-post/create-post.component'; 
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatRadioModule} from '@angular/material/radio'; 
 import {MatSelectModule} from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button'; 
+import {MatButtonModule} from '@angular/material/button';
+import { PostsComponent } from './components/posts/posts.component'; 
+import {MatTabsModule} from '@angular/material/tabs';
+import { ProjectPostComponent } from './components/project-post/project-post.component';
+import { ServicePostComponent } from './components/service-post/service-post.component';
+import { EditProjectPostComponent } from './components/edit-project-post/edit-project-post.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -35,6 +43,10 @@ import {MatButtonModule} from '@angular/material/button';
     PageNotFoundComponent,
     ProfileEditComponent,
     CreatePostComponent,
+    PostsComponent,
+    ProjectPostComponent,
+    ServicePostComponent,
+    EditProjectPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +65,10 @@ import {MatButtonModule} from '@angular/material/button';
     MatRadioModule,
     MatSelectModule,
     MatButtonModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

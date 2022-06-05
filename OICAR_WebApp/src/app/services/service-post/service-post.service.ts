@@ -34,4 +34,32 @@ export class ServicePostService {
       catchError(this.errorService.handleError<HttpResponse<ServicePost>>('createServicePost'))
     );
   }
+
+  // GET service post by id
+  getServicePost(id: number): Observable<HttpResponse<ServicePost>> {
+    return this.http.get<ServicePost>(`${GlobalConstants.servicePostsUrl}/${id}`, this.httpOptions).pipe(
+      tap(response => {
+        if (response.status == HttpStatusCode.Ok) {
+          console.log(`Service post fetched, id = ${response.body?.idservicePost}.`)
+        } else {
+          console.log(`Service post not found.`);
+        }
+      }),
+      catchError(this.errorService.handleError<HttpResponse<ServicePost>>(`getServicePost id=${id}`))
+    );
+  }
+
+    // GET all service posts
+    getServicePosts(): Observable<HttpResponse<ServicePost[]>> {
+      return this.http.get<ServicePost[]>(`${GlobalConstants.servicePostsUrl}`, this.httpOptions).pipe(
+        tap(response => {
+          if (response.status == HttpStatusCode.Ok) {
+            console.log(`Service posts fetched.`)
+          } else {
+            console.log(`Service posts not found.`);
+          }
+        }),
+        catchError(this.errorService.handleError<HttpResponse<ServicePost[]>>(`getServicePosts`))
+      );
+    }
 }

@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { Category } from '../models/category';
-import { ServicePostImage } from '../models/service-post-image';
-import { AuthService } from '../services/auth/auth.service';
-import { CategoryService } from '../services/category/category.service';
-import { ProjectPostService } from '../services/project-post/project-post.service';
-import { ServicePostService } from '../services/service-post/service-post.service';
-import { UserService } from '../services/user/user.service';
+import { Category } from '../../models/category';
+import { ServicePostImage } from '../../models/service-post-image';
+import { AuthService } from '../../services/auth/auth.service';
+import { CategoryService } from '../../services/category/category.service';
+import { ProjectPostService } from '../../services/project-post/project-post.service';
+import { ServicePostService } from '../../services/service-post/service-post.service';
+import { UserService } from '../../services/user/user.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {StepperOrientation} from '@angular/material/stepper';
-import { ProjectPost } from '../models/project-post';
-import { ServicePost } from '../models/service-post';
+import { ProjectPost } from '../../models/project-post';
+import { ServicePost } from '../../models/service-post';
 import { HttpStatusCode } from '@angular/common/http';
 import { Location } from '@angular/common';
 
@@ -78,7 +78,7 @@ export class CreatePostComponent implements OnInit {
 
   addProjectPost(): void {
     this.userService.getUser(this.authService.getLoggedUserId()).subscribe(userResult => {
-      if(userResult.status == HttpStatusCode.Ok && userResult.body != null) {
+      if(userResult != undefined && userResult.status == HttpStatusCode.Ok && userResult.body != null) {
         this.categoryService.getCategory(this.details.get('categoryCtrl')?.value.idcategory).subscribe(categoryResult => {
           if(categoryResult.status == HttpStatusCode.Ok && categoryResult.body != null){
             const projectPost = new ProjectPost(
@@ -98,7 +98,7 @@ export class CreatePostComponent implements OnInit {
             ); 
 
             this.projectPostService.createProjectPost(projectPost).subscribe(pPostResult => {
-              if(pPostResult.status == HttpStatusCode.Created){
+              if(pPostResult != undefined && pPostResult.status == HttpStatusCode.Created){
                 this.successfulPostCreation = true;
                 setTimeout(() => { this.router.navigate([`/profile/${userResult.body?.idappUser}`]); }, this.timeout);
               }
@@ -131,7 +131,7 @@ export class CreatePostComponent implements OnInit {
             servicePost.servicePostImages = this.convertFilesToServicePostImages(this.files, servicePost);
             
             this.servicePostService.createServicePost(servicePost).subscribe(sPostResult => {
-              if(sPostResult.status == HttpStatusCode.Created){
+              if(sPostResult != undefined && sPostResult.status == HttpStatusCode.Created){
                 this.successfulPostCreation = true;
                 setTimeout(() => { this.router.navigate([`/profile/${userResult.body?.idappUser}`]); }, this.timeout);
               }

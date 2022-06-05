@@ -1,0 +1,46 @@
+<div class="d-flex flex-column rounded px-4 pt-4 bg-light">
+    <h3 class="text-dark">{{projectPost.title}}</h3>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="w-25">Active</th>
+                <td 
+                    [ngClass]="{'text-success': projectPost.active == true, 'text-danger': projectPost.active == false}">
+                    {{projectPost.active == true ? "YES" : "NO"}}
+                </td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{projectPost.category?.title}}</td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td>{{projectPost.place}}</td>
+            </tr>
+            <tr>
+                <th>Duration in months</th>
+                <td>{{projectPost.durationInMonths}}</td>
+            </tr>
+            <tr>
+                <th>Number of teammates</th>
+                <td>{{projectPost.numberOfTeammates}}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{projectPost.comment}}</td>
+            </tr>
+            <tr>
+                <th>Date of creation</th>
+                <td>{{getDateString(projectPost.dateOfCreation)}}</td>
+            </tr>
+            <tr>
+                <th>User email</th>
+                <td><a href="mailto:{{projectPost.appUser?.email}}" class="p-0">{{projectPost.appUser?.email}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+

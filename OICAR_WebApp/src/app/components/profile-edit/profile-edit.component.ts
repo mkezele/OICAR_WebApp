@@ -71,7 +71,7 @@ export class ProfileEditComponent implements OnInit {
       updatedUser.lastName = this.form.value.lastName;
 
       this.userService.updateUser(updatedUser).subscribe(result => {
-        if(result.status == HttpStatusCode.NoContent){
+        if(result != undefined && result.status == HttpStatusCode.NoContent){
           this.successfulUpdate = true;
           setTimeout(() => { this.router.navigate([`/profile/${this.user?.idappUser}`]); }, this.timeout);
         } else {
@@ -100,7 +100,7 @@ export class ProfileEditComponent implements OnInit {
   deleteProfile(){
     if(this.user != undefined){
       this.userService.deleteUser(this.user.idappUser).subscribe(result => {
-        if(result.status == HttpStatusCode.NoContent){
+        if(result != undefined && result.status == HttpStatusCode.NoContent){
           this.successfulDeletion = true;
           this.authService.logout();
           setTimeout(() => { this.router.navigate([`/registration`]); }, this.timeout)
