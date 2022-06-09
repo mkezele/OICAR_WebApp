@@ -18,9 +18,6 @@ export class AuthService {
     private errorService: ErrorService,) { }
 
   authenticateUser(email: string, password: string): Observable<Number> {
-    // simulate user authenticated
-    return of(1018);
-    
     return this.http.post<Number>(`${ GlobalConstants.authUrl }?email=${ email }&passwordHash=${ password }`, null, this.httpOptions).pipe(
       tap((userId: Number) => {
         if(userId > 0){

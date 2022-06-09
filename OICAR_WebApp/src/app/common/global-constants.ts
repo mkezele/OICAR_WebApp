@@ -13,6 +13,8 @@ export class GlobalConstants {
     private static categoriesFileName = '/Category';
     private static servicePostsFileName = '/ServicePost';
     private static projectPostsFileName = '/ProjectPost';
+    private static profileFileName = '/Profile';
+    private static usersPostsFileName = '/UsersPosts';    
 
     public static urlBase = `${ this.scheme }${ this.host }${ this.port }`;
     
@@ -21,6 +23,7 @@ export class GlobalConstants {
     public static categoriesUrl = `${ this.urlBase }${ this.categoriesFileName }`;
     public static servicePostsUrl = `${ this.urlBase }${ this.servicePostsFileName }`;
     public static projectPostsUrl = `${ this.urlBase }${ this.projectPostsFileName }`;
+    public static profileUserPostsUrl = `${ this.urlBase }${ this.profileFileName }${ this.usersPostsFileName }`;
 
 
     // local storage keys

@@ -6,6 +6,7 @@ import { ProjectPost } from 'src/app/models/project-post';
 import { ServicePost } from 'src/app/models/service-post';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import { ProjectPostService } from 'src/app/services/project-post/project-post.service';
 import { ServicePostService } from 'src/app/services/service-post/service-post.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -25,7 +26,8 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute, 
     private userService: UserService,
     private projectPostService: ProjectPostService,
-    private servicePostService: ServicePostService) {
+    private servicePostService: ServicePostService,
+    private profileService: ProfileService,) {
       this.projectPosts = new Array<ProjectPost>();
       this.servicePosts = new Array<ServicePost>();
 
@@ -33,15 +35,16 @@ export class ProfileComponent implements OnInit {
       this.userService.getUser(id).subscribe(result => { 
         this.user = result.body ?? undefined; 
 
-        // TODO: fetch user project posts directly when API is fixed 
-        this.projectPostService.getProjectPosts().subscribe(result => {
-          if(result.body != null){
-            this.projectPosts = result.body.filter(p => p.appUserId == this.user?.idappUser);
-            this.projectPosts.sort((a, b) => -compareNumbers(a.dateOfCreation.valueOf(), b.dateOfCreation.valueOf()));
-          }  
-        });
+        if(this.user != undefined){
+          this.profileService.getUserProjectPosts(this.user?.idappUser).subscribe(postsResult => {
+            if(postsResult.body != null){
+              this.projectPosts = postsResult.body.filter(p => p.appUserId == this.user?.idappUser);
+              this.projectPosts.sort((a, b) => -compareNumbers(a.dateOfCreation.valueOf(), b.dateOfCreation.valueOf()));
+            }  
+          });
+        }
     
-        // TODO: fetch user service posts directly when API is fixed
+        // TODO: fetch user service posts
       });
     }
 

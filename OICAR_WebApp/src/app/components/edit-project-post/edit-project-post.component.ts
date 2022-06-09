@@ -73,71 +73,29 @@ export class EditProjectPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // for simulation purposes only - delete after inspection
-    let user = new User(
-      1018,
-      'John',
-      'Doe',
-      'john.doe@gmail.com',
-      btoa('123'),
-      '3FA85F64-5717-4562-B3FC-2C963F66AFA6',
-      false,
-      new Array<ChatMessage>(),
-      new Array<ChatMessage>(),
-      new Array<ProjectPost>(),
-      new Array<Report>(),
-      new Array<Report>(),
-      new Array<Review>(),
-      new Array<Review>(),
-      new Array<ServicePost>(),
-      new Array<Suspension>()
-    ); 
-    let category = new Category(1, "IT", new Array<ProjectPost>(), new Array<ServicePost>());
-    this.post = new ProjectPost(2, 1018, 1, true, "title", "comment", "place", new Date(), 3, 3, false, user, category);
+    const id = Number(this.route.snapshot.paramMap.get('postId'));
+    this.projectPostService.getProjectPost(id).subscribe(response => {
+      this.post = (response.status == HttpStatusCode.Ok && response != undefined && response.body != null) ? response.body : undefined;  
             
-    this.details.patchValue({
-      categoryCtrl: this.post.categoryId,
-      titleCtrl: this.post.title,
-      commentCtrl: this.post.comment,
-      placeCtrl: this.post.place,
-      durationCtrl: this.post.durationInMonths,
-      numOfTeammatesCtrl: this.post.numberOfTeammates
+      this.details.patchValue({
+        categoryCtrl: this.post?.categoryId,
+        titleCtrl: this.post?.title,
+        commentCtrl: this.post?.comment,
+        placeCtrl: this.post?.place,
+        durationCtrl: this.post?.durationInMonths,
+        numOfTeammatesCtrl: this.post?.numberOfTeammates
+      });
+  
+      this.details.valueChanges.subscribe(changedForm => {
+        this.formValuesChanged = 
+          changedForm.categoryCtrl != this.post?.categoryId ||
+          changedForm.titleCtrl != this.post?.title ||
+          changedForm.commentCtrl != this.post?.comment ||
+          changedForm.placeCtrl != this.post?.place ||
+          changedForm.durationCtrl != this.post?.durationInMonths ||
+          changedForm.numOfTeammatesCtrl != this.post?.numberOfTeammates;
+      });  
     });
-
-    this.details.valueChanges.subscribe(changedForm => {
-      this.formValuesChanged = 
-        changedForm.categoryCtrl != this.post?.categoryId ||
-        changedForm.titleCtrl != this.post?.title ||
-        changedForm.commentCtrl != this.post?.comment ||
-        changedForm.placeCtrl != this.post?.place ||
-        changedForm.durationCtrl != this.post?.durationInMonths ||
-        changedForm.numOfTeammatesCtrl != this.post?.numberOfTeammates;
-    }); 
-    //
-
-    // const id = Number(this.route.snapshot.paramMap.get('postId'));
-    // this.projectPostService.getProjectPost(id).subscribe(response => {
-    //   this.post = (response.status == HttpStatusCode.Ok && response != undefined && response.body != null) ? response.body : undefined;  
-
-    //   this.details.patchValue({
-    //     categoryCtrl: this.post.categoryId,
-    //     titleCtrl: this.post.title,
-    //     commentCtrl: this.post.comment,
-    //     placeCtrl: this.post.place,
-    //     durationCtrl: this.post.durationInMonths,
-    //     numOfTeammatesCtrl: this.post.numberOfTeammates
-    //   });
-
-    //   this.details.valueChanges.subscribe(changedForm => {
-    //     this.formValuesChanged = 
-    //       changedForm.categoryCtrl != this.post?.categoryId ||
-    //       changedForm.titleCtrl != this.post?.title ||
-    //       changedForm.commentCtrl != this.post?.comment ||
-    //       changedForm.placeCtrl != this.post?.place ||
-    //       changedForm.durationCtrl != this.post?.durationInMonths ||
-    //       changedForm.numOfTeammatesCtrl != this.post?.numberOfTeammates;
-    //   }); 
-    // });
   }
 
   submit() {
@@ -153,6 +111,7 @@ export class EditProjectPostComponent implements OnInit {
       updatedPost.place = this.details.value.placeCtrl;
       updatedPost.durationInMonths = this.details.value.durationCtrl;
       updatedPost.numberOfTeammates = this.details.value.numOfTeammatesCtrl;
+      updatedPost.category = this.categories.find(c => c.idcategory == updatedPost.categoryId)!!;
 
       this.projectPostService.updateProjectPost(updatedPost).subscribe(result => {
         if(result != undefined && result.status == HttpStatusCode.NoContent){

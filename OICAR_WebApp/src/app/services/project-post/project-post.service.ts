@@ -5,7 +5,9 @@ import { ObjectMapper } from 'json-object-mapper';
 import { Observable, tap, catchError, of } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { ProjectPost } from 'src/app/models/project-post';
+import { CategoryService } from '../category/category.service';
 import { ErrorService } from '../error/error.service';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,8 @@ export class ProjectPostService {
   constructor(
     private http: HttpClient, 
     private errorService: ErrorService,
+    private userService: UserService,
+    private categoryService: CategoryService,
   ) { }
 
     // POST
@@ -40,7 +44,24 @@ export class ProjectPostService {
   getProjectPost(id: number): Observable<HttpResponse<ProjectPost>> {
     return this.http.get<ProjectPost>(`${GlobalConstants.projectPostsUrl}/${id}`, this.httpOptions).pipe(
       tap(response => {
-        if (response.status == HttpStatusCode.Ok) {
+        if (response.status == HttpStatusCode.Ok && response.body != undefined) {
+
+          this.userService.getUser(response.body.appUserId).subscribe(userResult => {
+            if(userResult != null && userResult != undefined){
+              if(response.body != null && userResult.body != null) {
+                response.body.appUser = userResult?.body;
+              }
+            }
+          });
+
+          this.categoryService.getCategory(response.body.categoryId).subscribe(categoryResult => {
+            if(categoryResult != null && categoryResult != undefined){
+              if(response.body != null && categoryResult.body != null) {
+                response.body.category = categoryResult?.body;
+              }
+            }
+          });
+
           console.log(`Project post fetched, id = ${response.body?.idprojectPost}.`)
         } else {
           console.log(`Project post not found.`);
