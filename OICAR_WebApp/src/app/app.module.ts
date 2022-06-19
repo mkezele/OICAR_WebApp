@@ -31,6 +31,7 @@ import { EditProjectPostComponent } from './components/edit-project-post/edit-pr
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ProjectPostComponent,
     ServicePostComponent,
     EditProjectPostComponent,
+    ProfileViewComponent,
   ],
   imports: [
     BrowserModule,

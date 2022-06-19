@@ -85,6 +85,7 @@
         <mat-tab label="Project posts">
             <div *ngFor="let post of filteredProjectPosts" class="mt-3">
                 <app-project-post [projectPost]="post"></app-project-post>
+                <button routerLink="../profile/view/{{this.authService.getLoggedUserId()}}/{{post.appUser?.idappUser}}" mat-raised-button color="primary">View all posts from this user</button>
             </div>
         </mat-tab>
         <mat-tab label="Service posts">

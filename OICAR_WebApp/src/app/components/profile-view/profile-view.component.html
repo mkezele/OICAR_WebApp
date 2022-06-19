@@ -1,0 +1,26 @@
+<div class="d-flex flex-column align-items-center rounded p-4 textWhite">
+    <h2>Profile</h2>
+    <h3>{{user?.firstName}} {{user?.lastName}}</h3>
+    <button routerLink="/report/{{this.authService.getLoggedUserId()}}/{{user?.idappUser}}" class="btn btn-danger">Report</button>
+    <button routerLink="/review/{{this.authService.getLoggedUserId()}}/{{user?.idappUser}}" class="btn btn-success mt-3">Review</button>
+</div>
+<div class="p-4">
+    <h2 class="text-center textWhite">{{user?.firstName}}'s' posts</h2>
+    <mat-tab-group>
+        <mat-tab label="Project posts">
+            <div *ngFor="let post of projectPosts" class="mt-3">
+                <div class="bg-light">
+                    <app-project-post [projectPost]="post"></app-project-post>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Service posts">
+            <!-- <div *ngFor="let post of servicePosts" class="mt-3">
+                
+            </div>  -->
+        </mat-tab>
+        <mat-tab label="Reviews">
+
+        </mat-tab>
+    </mat-tab-group>
+</div>

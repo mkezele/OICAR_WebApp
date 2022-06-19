@@ -10,6 +10,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { AuthGuard } from './guards/auth/auth.guard';
 import { UserPostGuard } from './guards/user-post/user-post.guard';
 import { EditProjectPostComponent } from './components/edit-project-post/edit-project-post.component';
+import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: 'posts', pathMatch: 'full' },
@@ -22,6 +23,11 @@ const routes: Routes = [
   { 
     path: 'profile/:userId', 
     component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  { 
+    path: 'profile/view/:userId/:viewedUserId', 
+    component: ProfileViewComponent,
     canActivate: [AuthGuard],
   },
   {

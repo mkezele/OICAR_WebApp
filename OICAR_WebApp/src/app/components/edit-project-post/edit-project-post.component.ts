@@ -62,6 +62,7 @@ export class EditProjectPostComponent implements OnInit {
           commentCtrl: ['', Validators.required],
           durationCtrl: ['', Validators.required],
           numOfTeammatesCtrl: ['', Validators.required],
+          activeCtrl: ['']
         });
 
         this.categories = new Array<Category>();
@@ -83,7 +84,8 @@ export class EditProjectPostComponent implements OnInit {
         commentCtrl: this.post?.comment,
         placeCtrl: this.post?.place,
         durationCtrl: this.post?.durationInMonths,
-        numOfTeammatesCtrl: this.post?.numberOfTeammates
+        numOfTeammatesCtrl: this.post?.numberOfTeammates,
+        activeCtrl: this.post?.active
       });
   
       this.details.valueChanges.subscribe(changedForm => {
@@ -93,7 +95,8 @@ export class EditProjectPostComponent implements OnInit {
           changedForm.commentCtrl != this.post?.comment ||
           changedForm.placeCtrl != this.post?.place ||
           changedForm.durationCtrl != this.post?.durationInMonths ||
-          changedForm.numOfTeammatesCtrl != this.post?.numberOfTeammates;
+          changedForm.numOfTeammatesCtrl != this.post?.numberOfTeammates ||
+          changedForm.activeCtrl != this.post?.active;
       });  
     });
   }
@@ -112,6 +115,7 @@ export class EditProjectPostComponent implements OnInit {
       updatedPost.durationInMonths = this.details.value.durationCtrl;
       updatedPost.numberOfTeammates = this.details.value.numOfTeammatesCtrl;
       updatedPost.category = this.categories.find(c => c.idcategory == updatedPost.categoryId)!!;
+      updatedPost.active = this.details.value.activeCtrl;
 
       this.projectPostService.updateProjectPost(updatedPost).subscribe(result => {
         if(result != undefined && result.status == HttpStatusCode.NoContent){
