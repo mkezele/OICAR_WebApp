@@ -5,7 +5,6 @@
     <button routerLink="/create-post/{{user?.idappUser}}" class="btn btn-success mt-3">Create post</button>
 </div>
 <div class="p-4">
-    <h2 class="text-center textWhite">Your posts</h2>
     <mat-tab-group>
         <mat-tab label="Project posts">
             <div *ngFor="let post of projectPosts" class="mt-3">

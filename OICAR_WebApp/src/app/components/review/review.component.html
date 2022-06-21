@@ -1,0 +1,16 @@
+<div class="d-flex flex-column rounded px-4 pt-4 bg-light">
+    <button mat-raised-button color="primary" class="width-fit-content" (click)="visitProfile()">{{review.reviewingUser?.firstName}} {{review.reviewingUser?.lastName}}</button>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>{{getDateString(review.dateOfCreation)}}</td>
+            </tr>
+            <tr>
+                <td>{{review.comment}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

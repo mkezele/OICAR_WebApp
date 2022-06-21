@@ -10,6 +10,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { AuthGuard } from './guards/auth/auth.guard';
 import { UserPostGuard } from './guards/user-post/user-post.guard';
 import { EditProjectPostComponent } from './components/edit-project-post/edit-project-post.component';
+import { CreateReportComponent } from './components/create-report/create-report.component';
+import { CreateReviewComponent } from './components/create-review/create-review.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 
 const routes: Routes = [
@@ -48,6 +50,16 @@ const routes: Routes = [
     path: 'profile/:userId/project-posts/:postId/edit', 
     component: EditProjectPostComponent,
     canActivate: [AuthGuard, UserPostGuard]
+  },
+  { 
+    path: 'report/:userId/:reportedUserId', 
+    component: CreateReportComponent,
+    canActivate: [AuthGuard],
+  },
+  { 
+    path: 'review/:userId/:reviewedUserId', 
+    component: CreateReviewComponent,
+    canActivate: [AuthGuard],
   },
   { 
     path: '**', component: PageNotFoundComponent 

@@ -1,0 +1,45 @@
+<div class="contentWidth m-auto d-flex flex-column align-items-center rounded py-4 bg-light">
+    <h2 class="w-100 text-center border-bottom">Write a review for {{reviewedUser?.firstName}}</h2>
+    <mat-stepper linear [orientation]="(stepperOrientation | async)!" class="w-100">
+        <!-- Step - Comment-->
+        <mat-step [stepControl]="comment" label="Review">
+            <form #f="ngForm" [formGroup]="comment" class="textWhite">
+                <div>
+                    <mat-form-field appearance="fill" class="textWhite w-100">
+                        <mat-label>Comment</mat-label>
+                        <textarea matInput formControlName="commentCtrl" placeholder="" required></textarea>
+                    </mat-form-field>
+                </div>
+                <!-- Submit button -->
+                <div class="mt-3">
+                    <button 
+                        type="submit"
+                        mat-raised-button color="primary"
+                        [disabled]="!allControlsValid()"
+                        (click)="submit()">
+                        Submit
+                    </button>
+                </div>
+                <!-- Info message - unsuccessful review creation -->
+                <div *ngIf="f.submitted && !successfulReviewCreation" class="alert alert-danger mt-3" role="alert">
+                    Something went wrong. Review was not created. :(
+                </div>
+
+                <!-- Info message - successful review creation -->
+                <div *ngIf="f.submitted && successfulReviewCreation" class="alert alert-danger mt-3" role="alert">
+                    Review was successfully created. You will be redirected back shortly.
+                </div>
+            </form>
+        </mat-step>
+        <!-- Step - details -->
+    </mat-stepper>
+    <div>
+        <button 
+        mat-raised-button 
+        class="mt-3"
+        color="accent"
+        (click)="goBack()">
+            Go back
+        </button>
+    </div>
+</div>

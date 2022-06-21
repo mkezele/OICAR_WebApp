@@ -1,7 +1,7 @@
 import { User } from "./user";
 
 export class ChatMessage {
-    private _idChatMessage: number;
+    private _idchatMessage: number;
     private _sendingUserId: number;
     private _receivingUserId: number;
     private _sentDateTime: string;
@@ -10,14 +10,14 @@ export class ChatMessage {
     private _sendingUser: User;
 
     constructor(
-        idChatMessage: number, 
+        idchatMessage: number, 
         sendingUserId: number,
         receivingUserId: number,
         sentDateTime: string,
         content: string,
         receivingUser: User,
         sendingUser: User,){
-            this._idChatMessage = idChatMessage;
+            this._idchatMessage = idchatMessage;
             this._sendingUserId = sendingUserId;
             this._receivingUserId = receivingUserId;
             this._sentDateTime = sentDateTime;
@@ -29,7 +29,7 @@ export class ChatMessage {
 
     // getters
     get idChatMessage(): number {
-        return this._idChatMessage;
+        return this._idchatMessage;
     }
 
     get sendingUserId(): number {

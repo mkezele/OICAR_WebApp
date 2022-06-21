@@ -32,6 +32,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
+import { CreateReportComponent } from './components/create-report/create-report.component';
+import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { ReviewComponent } from './components/review/review.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { ProfileViewComponent } from './components/profile-view/profile-view.com
     ServicePostComponent,
     EditProjectPostComponent,
     ProfileViewComponent,
+    CreateReportComponent,
+    CreateReviewComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
