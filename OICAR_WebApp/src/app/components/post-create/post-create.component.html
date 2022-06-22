@@ -27,7 +27,7 @@
         </mat-step>
         <!-- Step - details -->
         <mat-step [stepControl]="details" label="Details">
-            <form #f="ngForm" [formGroup]="details" class="mt-3">
+            <form #f="ngForm" [formGroup]="details" class="mt-3" enctype="multipart/form-data">
                 <!-- Category -->
                 <div class="mb-3">
                     <mat-form-field color="accent" appearance="fill" class="w-100">

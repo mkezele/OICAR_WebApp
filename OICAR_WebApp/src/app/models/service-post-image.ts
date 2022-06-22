@@ -9,12 +9,12 @@ export class ServicePostImage {
     private _servicePostId: number;
 
     @JsonProperty({ name: "picture" })
-    private _picture: string;
+    private _picture: string | ArrayBuffer | null;
 
     constructor(
         idservicePostImage: number, 
         servicePostId: number, 
-        picture: string,) {
+        picture: string | ArrayBuffer | null,) {
             this._idservicePostImage = idservicePostImage;
             this._servicePostId = servicePostId;
             this._picture = picture;
@@ -29,7 +29,7 @@ export class ServicePostImage {
         return this._servicePostId;
     }
 
-    get picture(): string {
+    get picture(): string | ArrayBuffer | null {
         return this._picture;
     }
 }

@@ -112,7 +112,7 @@ export class PostCreateComponent implements OnInit {
   addServicePost(): void {
     this.userService.getUser(this.authService.getLoggedUserId()).subscribe(userResult => {
       if(userResult.status == HttpStatusCode.Ok && userResult.body != null) {
-        this.categoryService.getCategory(this.details.get('categoryCtrl')?.value.idcategory).subscribe(categoryResult => {
+        this.categoryService.getCategory(this.details.get('categoryCtrl')?.value.idcategory).subscribe(async categoryResult => {
           if(categoryResult.status == HttpStatusCode.Ok && categoryResult.body != null){
             const servicePost = new ServicePost(
               0,
@@ -128,7 +128,7 @@ export class PostCreateComponent implements OnInit {
               categoryResult.body,
             ); 
 
-            servicePost.servicePostImages = this.convertFilesToServicePostImages(this.files, servicePost);
+            servicePost.servicePostImages = await this.convertFilesToServicePostImages(this.files, servicePost);
             
             this.servicePostService.createServicePost(servicePost).subscribe(sPostResult => {
               if(sPostResult != undefined && sPostResult.status == HttpStatusCode.Created){
@@ -161,16 +161,24 @@ export class PostCreateComponent implements OnInit {
     this.files = (event.target as HTMLInputElement).files ?? undefined;  
   }
 
-  convertFilesToServicePostImages(files: FileList | undefined, servicePost: ServicePost): ServicePostImage[] {
+  async convertFilesToServicePostImages(files: FileList | undefined, servicePost: ServicePost): Promise<ServicePostImage[]> {
     let servicePostImages = new Array<ServicePostImage>();
 
     if(files != undefined) {
       for (let i = 0; i < (files?.length ?? 0); i++) {
-        servicePostImages.push(new ServicePostImage(0, servicePost.idservicePost, files[i].name));
+        servicePostImages.push(new ServicePostImage(0, servicePost.idservicePost, await this.blobToBase64(files[i])));                
       }
     }
 
     return servicePostImages;
+  }
+
+  async blobToBase64(blob: Blob): Promise<string | ArrayBuffer | null> {
+    return new Promise((resolve, _) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.readAsDataURL(blob);
+    });
   }
 
 }
