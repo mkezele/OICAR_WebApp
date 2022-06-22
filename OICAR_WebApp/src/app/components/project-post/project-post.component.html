@@ -1,12 +1,19 @@
-<div class="d-flex flex-column rounded px-4 pt-4 bg-light">
-    <h3 class="text-dark">{{projectPost.title}}</h3>
-
-    <table class="table">
+<div class="d-flex flex-column rounded px-4 pt-4 bg-white">
+    <div class="d-flex flex-row">
+        <h3 
+            id="profile"
+            routerLink="/profile/view/{{this.authService.getLoggedUserId()}}/{{projectPost.appUser?.idappUser}}" 
+            class="color-purple bold">
+            {{projectPost.appUser?.firstName}} {{projectPost.appUser?.lastName}}
+        </h3>
+        <h3 class="color-purple bold mx-4">{{projectPost.title}}</h3>
+    </div>
+    <table class="mb-3 color-black">
         <tbody>
             <tr>
                 <th class="w-25">Active</th>
                 <td 
-                    [ngClass]="{'text-success': projectPost.active == true, 'text-danger': projectPost.active == false}">
+                    [ngClass]="{'color-green bold': projectPost.active == true, 'color-red': projectPost.active == false}">
                     {{projectPost.active == true ? "YES" : "NO"}}
                 </td>
             </tr>

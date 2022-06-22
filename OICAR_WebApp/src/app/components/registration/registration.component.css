@@ -1,3 +1,16 @@
+.bg-color-red{
+    background-color: #F44336;
+}
+
+.bg-color-green{
+    background-color: #69F0AE;
+}
+
+.text-black{
+    color: black;
+}
+
+
 /* small */
 @media only screen and (max-width: 768px) {
     .contentWidth{

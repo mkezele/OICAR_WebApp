@@ -1,3 +1,16 @@
-.width-fit-content{
-    width: fit-content;
+.color-purple{
+    color: #7B1FA2
+}
+
+.bold{
+    font-weight: 900;
+}
+
+h3:hover{
+    color: #E040FB;
+    cursor: pointer;
+}
+
+.color-black{
+    color: black;
 }

@@ -1,6 +1,7 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ProjectPost } from 'src/app/models/project-post';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -15,6 +16,7 @@ export class ProjectPostComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private userService: UserService,
+    public authService: AuthService,
   ) {
     	
   }

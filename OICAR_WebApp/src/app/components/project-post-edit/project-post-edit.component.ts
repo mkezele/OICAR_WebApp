@@ -3,21 +3,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { Category } from '../../models/category';
-import { AuthService } from '../../services/auth/auth.service';
 import { CategoryService } from '../../services/category/category.service';
 import { ProjectPostService } from '../../services/project-post/project-post.service';
-import { UserService } from '../../services/user/user.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {StepperOrientation} from '@angular/material/stepper';
 import { ProjectPost } from '../../models/project-post';
 import { HttpStatusCode } from '@angular/common/http';
 import { Location } from '@angular/common';
-import { User } from 'src/app/models/user';
-import { ChatMessage } from 'src/app/models/chat-message';
-import { Report } from 'src/app/models/report';
-import { Review } from 'src/app/models/review';
-import { ServicePost } from 'src/app/models/service-post';
-import { Suspension } from 'src/app/models/suspension';
 import { DialogData } from 'src/app/models/dialog-data';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,18 +17,18 @@ import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-post',
-  templateUrl: './edit-project-post.component.html',
-  styleUrls: ['./edit-project-post.component.css']
+  templateUrl: './project-post-edit.component.html',
+  styleUrls: ['./project-post-edit.component.css']
 })
-export class EditProjectPostComponent implements OnInit {
+export class ProjectPostEditComponent implements OnInit {
 
-  public post: ProjectPost | undefined = undefined;
-  public stepperOrientation: Observable<StepperOrientation>;
-  public details: FormGroup;
-  public categories: Category[];
-  public formValuesChanged = false;
-  public successfulPostEdit: boolean | undefined = undefined;
-  public successfulPostDeletion: boolean | undefined = undefined;
+  post: ProjectPost | undefined = undefined;
+  stepperOrientation: Observable<StepperOrientation>;
+  details: FormGroup;
+  categories: Category[];
+  formValuesChanged = false;
+  successfulPostEdit: boolean | undefined = undefined;
+  successfulPostDeletion: boolean | undefined = undefined;
 
   private timeout = 1000;
 
@@ -44,8 +36,6 @@ export class EditProjectPostComponent implements OnInit {
     public dialog: MatDialog,
     private formBuilder: FormBuilder, 
     private breakpointObserver: BreakpointObserver,
-    private authService: AuthService,
-    private userService: UserService,
     private route: ActivatedRoute, 
     private categoryService: CategoryService,
     private location: Location,
@@ -66,7 +56,7 @@ export class EditProjectPostComponent implements OnInit {
         });
 
         this.categories = new Array<Category>();
-        categoryService.getCategories().subscribe(result => {
+        this.categoryService.getCategories().subscribe(result => {
           if(result.body != null) {
             this.categories = result.body;
           }     

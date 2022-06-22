@@ -1,5 +1,13 @@
-.textWhite{
-    color: white;
+.bg-color-red{
+    background-color: #F44336;
+}
+
+.bg-color-green{
+    background-color: #69F0AE;
+}
+
+.text-black{
+    color: black;
 }
 
 /* small */

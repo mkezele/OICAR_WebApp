@@ -3,6 +3,7 @@ import { ProjectPost } from "./project-post";
 import { ServicePost } from "./service-post";
 
 export class Category {
+
     @JsonProperty({ name: "idcategory" })
     private _idcategory: number;
 

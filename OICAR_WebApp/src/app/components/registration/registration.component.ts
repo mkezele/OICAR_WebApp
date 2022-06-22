@@ -1,16 +1,15 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/common/global-constants';
-import { ChatMessage } from 'src/app/models/chat-message';
 import { ProjectPost } from 'src/app/models/project-post';
 import { Report } from 'src/app/models/report';
 import { Review } from 'src/app/models/review';
 import { ServicePost } from 'src/app/models/service-post';
 import { Suspension } from 'src/app/models/suspension';
 import { User } from 'src/app/models/user';
-import { FormValidationService } from 'src/app/services/form-validation/form-validation.service';
+import { UserLevel } from 'src/app/models/user-level';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -19,36 +18,35 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  
-  public form: FormGroup;
-  public successfulRegistration: boolean | undefined = undefined;
-  public showPassword = false;
+  hide = true;
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+  successfulRegistration: boolean | undefined = undefined;
   private timeout = 1000;
 
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    public formValidationService: FormValidationService,
   ) { 
-    this.form = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
+
   }
 
   ngOnInit(): void {
   }
 
+  formValid() {
+    return this.firstName.valid && this.lastName.valid && this.email.valid && this.password.valid;
+  }
+
   submit(){
-    if(this.form.valid){
+    if(this.formValid()){
       this.addUser(
-        this.form.value.firstName.trim(),
-        this.form.value.lastName.trim(),
-        this.form.value.email.trim(),
-        btoa(this.form.value.password.trim()),
+        this.firstName.value.trim(),
+        this.lastName.value.trim(),
+        this.email.value.trim(),
+        btoa(this.password.value.trim()),
       );
     }
   }
@@ -62,8 +60,9 @@ export class RegistrationComponent implements OnInit {
       passwordHash,
       '3fa85f64-5717-4562-b3fc-2c963f66afa6',
       false,
-      new Array<ChatMessage>(),
-      new Array<ChatMessage>(),
+      1,
+      // fix when api is fixed
+      new UserLevel(1, 'Basic'),
       new Array<ProjectPost>(),
       new Array<Report>(),
       new Array<Report>(),
@@ -83,9 +82,5 @@ export class RegistrationComponent implements OnInit {
           this.successfulRegistration = false;
         }
       });
-  }
-
-  toggleShowPassword() {
-    this.showPassword = !this.showPassword;
   }
 }

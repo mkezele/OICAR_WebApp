@@ -36,8 +36,7 @@ export class ReviewService {
 
     // GET user reviews by user id
     getUserReviews(userId: number): Observable<HttpResponse<Review[]>> {
-      // http://localhost:5131/Review?userId=1020
-      return this.http.get<Review[]>(`${GlobalConstants.reviewsUrl}?userId=${userId}`, this.httpOptions).pipe(
+      return this.http.get<Review[]>(`${GlobalConstants.reviewsUrl}/GetForUser/${userId}`, this.httpOptions).pipe(
         tap(response => {
           if (response.status == HttpStatusCode.Ok) {
             console.log(`User reviews fetched.`)

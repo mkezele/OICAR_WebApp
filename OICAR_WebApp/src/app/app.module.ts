@@ -17,7 +17,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import { CreatePostComponent } from './components/create-post/create-post.component'; 
+import { PostCreateComponent } from './components/post-create/post-create.component'; 
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatRadioModule} from '@angular/material/radio'; 
@@ -27,14 +27,17 @@ import { PostsComponent } from './components/posts/posts.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ProjectPostComponent } from './components/project-post/project-post.component';
 import { ServicePostComponent } from './components/service-post/service-post.component';
-import { EditProjectPostComponent } from './components/edit-project-post/edit-project-post.component';
+import { ProjectPostEditComponent } from './components/project-post-edit/project-post-edit.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
-import { CreateReportComponent } from './components/create-report/create-report.component';
-import { CreateReviewComponent } from './components/create-review/create-review.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ReportCreateComponent } from './components/report-create/report-create.component';
+import { ReviewCreateComponent } from './components/review-create/review-create.component';
 import { ReviewComponent } from './components/review/review.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -46,14 +49,14 @@ import { ReviewComponent } from './components/review/review.component';
     AppnavComponent,
     PageNotFoundComponent,
     ProfileEditComponent,
-    CreatePostComponent,
+    PostCreateComponent,
     PostsComponent,
     ProjectPostComponent,
     ServicePostComponent,
-    EditProjectPostComponent,
+    ProjectPostEditComponent,
     ProfileViewComponent,
-    CreateReportComponent,
-    CreateReviewComponent,
+    ReportCreateComponent,
+    ReviewCreateComponent,
     ReviewComponent,
   ],
   imports: [
@@ -77,6 +80,9 @@ import { ReviewComponent } from './components/review/review.component';
     MatCheckboxModule,
     MatAutocompleteModule,
     MatExpansionModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

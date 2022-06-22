@@ -1,12 +1,12 @@
-<div class="contentWidth m-auto d-flex flex-column align-items-center rounded py-4 bg-light">
-    <h2 class="w-100 text-center border-bottom">Report user {{reportedUser?.firstName}}</h2>
+<div class="contentWidth m-auto d-flex flex-column align-items-center rounded py-4">
+    <h2 class="w-100 text-center">Report {{reportedUser?.firstName}}</h2>
     <mat-stepper linear [orientation]="(stepperOrientation | async)!" class="w-100">
         <!-- Step - report reason -->
         <mat-step [stepControl]="reportReason" label="Report reason">
             <form #f="ngForm" [formGroup]="reportReason" class="mt-3">
                 <!-- Report reason -->
                 <div class="mb-3">
-                    <mat-form-field appearance="fill" class="w-100">
+                    <mat-form-field color="accent" appearance="fill" class="w-100">
                         <mat-label>Report reason</mat-label>
                         <mat-select formControlName="reportReasonCtrl" required>
                             <mat-option>--</mat-option>
@@ -26,15 +26,20 @@
                         Submit
                     </button>
                 </div>
+
                 <!-- Info message - unsuccessful report creation -->
-                <div *ngIf="f.submitted && !successfulReportCreation" class="alert alert-danger mt-3" role="alert">
+                <mat-card 
+                    *ngIf="f.submitted && successfulReportCreation != undefined && !successfulReportCreation"
+                    class="bg-color-red mt-3">
                     Something went wrong. User was not reported. :(
-                </div>
-    
+                </mat-card>
+            
                 <!-- Info message - successful report creation -->
-                <div *ngIf="f.submitted && successfulReportCreation" class="alert alert-danger mt-3" role="alert">
+                <mat-card 
+                    *ngIf="f.submitted && successfulReportCreation != undefined && successfulReportCreation"
+                    class="bg-color-green text-black mt-3">
                     User successfully reported. You will be redirected back shortly.
-                </div>
+                </mat-card>
             </form>
         </mat-step>
     </mat-stepper>
@@ -42,7 +47,6 @@
         <button 
         mat-raised-button 
         class="mt-3"
-        color="accent"
         (click)="goBack()">
             Go back
         </button>

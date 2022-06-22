@@ -1,28 +1,23 @@
 import { JsonProperty } from "json-object-mapper";
-import { ServicePost } from "./service-post";
 
 export class ServicePostImage {
+
     @JsonProperty({ name: "idservicePostImage" })
     private _idservicePostImage: number;
 
     @JsonProperty({ name: "servicePostId" })
     private _servicePostId: number;
 
-    @JsonProperty({ name: "filePath" })
-    private _filePath: string;
-
-    @JsonProperty({ name: "servicePost" })
-    private _servicePost: ServicePost;
+    @JsonProperty({ name: "picture" })
+    private _picture: string;
 
     constructor(
         idservicePostImage: number, 
         servicePostId: number, 
-        filePath: string,
-        servicePost: ServicePost,) {
+        picture: string,) {
             this._idservicePostImage = idservicePostImage;
             this._servicePostId = servicePostId;
-            this._filePath = filePath;
-            this._servicePost = servicePost;
+            this._picture = picture;
     }
 
     // getters
@@ -34,11 +29,7 @@ export class ServicePostImage {
         return this._servicePostId;
     }
 
-    get filePath(): string {
-        return this._filePath;
-    }
-
-    get servicePost(): ServicePost {
-        return this._servicePost;
+    get picture(): string {
+        return this._picture;
     }
 }

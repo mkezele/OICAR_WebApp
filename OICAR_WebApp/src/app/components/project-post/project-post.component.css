@@ -1,0 +1,37 @@
+.bg-white{
+    background-color: white;
+}
+
+.color-green{
+    color: #2E7D32;   
+}
+   
+.color-white{
+    color: white;   
+}
+
+.color-purple{
+    color: #7B1FA2
+}
+
+.color-red{
+    color: #F44336;
+}
+
+.color-black{
+    color: black;
+}
+
+.bold{
+    font-weight: 900;
+}
+
+
+#profile:hover{
+    cursor: pointer;
+    color: #E040FB;
+}
+
+a:hover{
+    color: #E040FB;
+}

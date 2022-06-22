@@ -1,12 +1,13 @@
 import { JsonProperty } from "json-object-mapper";
-import { ChatMessage } from "./chat-message";
 import { ProjectPost } from "./project-post";
 import { Report } from "./report";
 import { Review } from "./review";
 import { ServicePost } from "./service-post";
 import { Suspension } from "./suspension";
+import { UserLevel } from "./user-level";
 
 export class User {  
+
     @JsonProperty({ name: "idappUser" })
     private _idappUser: number;
 
@@ -28,11 +29,11 @@ export class User {
     @JsonProperty({ name: "deleted" })
     private _deleted: boolean;
 
-    @JsonProperty({ name: "chatMessageReceivingUsers" })
-    private _chatMessageReceivingUsers: ChatMessage[];
+    @JsonProperty({ name: "userLevelId" })
+    private _userLevelId: number;
 
-    @JsonProperty({ name: "chatMessageSendingUsers" })
-    private _chatMessageSendingUsers: ChatMessage[];
+    @JsonProperty({ name: "userLevel" })
+    private _userLevel: UserLevel;
 
     @JsonProperty({ name: "projectPosts" })
     private _projectPosts: ProjectPost[];
@@ -63,8 +64,8 @@ export class User {
         passwordHash: string,
         salt: string,
         deleted: boolean,
-        chatMessageReceivingUsers: ChatMessage[],
-        chatMessageSendingUsers: ChatMessage[],
+        userLevelId: number,
+        userLevel: UserLevel,
         projectPosts: ProjectPost[],
         reportReportedUsers: Report[],
         reportReportingUsers: Report[],
@@ -79,8 +80,8 @@ export class User {
             this._passwordHash = passwordHash;
             this._salt = salt;
             this._deleted = deleted;
-            this._chatMessageReceivingUsers = chatMessageReceivingUsers;
-            this._chatMessageSendingUsers = chatMessageSendingUsers;
+            this._userLevelId = userLevelId;
+            this._userLevel = userLevel;
             this._projectPosts = projectPosts;
             this._reportReportedUsers = reportReportedUsers;
             this._reportReportingUsers = reportReportingUsers;
@@ -96,63 +97,63 @@ export class User {
     }
 
     get firstName(): string {
-    return this._firstName;
+        return this._firstName;
     }
 
     get lastName(): string {
-    return this._lastName;
+        return this._lastName;
     }
 
     get email(): string {
-    return this._email;
+        return this._email;
     }
 
     get passwordHash(): string {
-    return this._passwordHash;
+        return this._passwordHash;
     }
 
-    get salt(): string{
-    return this._salt;
+    get salt(): string {
+        return this._salt;
     }
 
-    get deleted(): boolean{
-    return this._deleted;
+    get deleted(): boolean {
+        return this._deleted;
     }
 
-    get chatMessageReceivingUsers(): ChatMessage[]{
-    return this._chatMessageReceivingUsers;
+    get userLevelId(): number {
+        return this._userLevelId;
     }
 
-    get chatMessageSendingUsers(): ChatMessage[]{
-    return this._chatMessageSendingUsers;
+    get userLevel(): UserLevel {
+        return this._userLevel;
     }
 
-    get projectPosts(): ProjectPost[]{
-    return this._projectPosts;
+    get projectPosts(): ProjectPost[] {
+        return this._projectPosts;
     }
 
-    get reportReportedUsers(): Report[]{
-    return this._reportReportedUsers;
+    get reportReportedUsers(): Report[] {
+        return this._reportReportedUsers;
     }
 
-    get reportReportingUsers(): Report[]{
-    return this._reportReportingUsers;
+    get reportReportingUsers(): Report[] {
+        return this._reportReportingUsers;
     }
 
-    get reviewReviewedUsers(): Review[]{
-    return this._reviewReviewedUsers;
+    get reviewReviewedUsers(): Review[] {
+        return this._reviewReviewedUsers;
     }
 
-    get reviewReviewingUsers(): Review[]{
-    return this._reviewReviewingUsers;
+    get reviewReviewingUsers(): Review[] {
+        return this._reviewReviewingUsers;
     }
 
-    get servicePosts(): ServicePost[]{
-    return this._servicePosts;
+    get servicePosts(): ServicePost[] {
+        return this._servicePosts;
     }
 
-    get suspensions(): Suspension[]{
-    return this._suspensions;
+    get suspensions(): Suspension[] {
+        return this._suspensions;
     }
 
     // setters
@@ -166,5 +167,9 @@ export class User {
 
     set lastName(lastName: string) {
         this._lastName = lastName;
+    }
+
+    set userLevel(userLevel: UserLevel) {
+        this._userLevel = userLevel;
     }
 }

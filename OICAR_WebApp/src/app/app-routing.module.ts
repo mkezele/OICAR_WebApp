@@ -6,12 +6,12 @@ import { PostsComponent } from './components/posts/posts.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { CreatePostComponent } from './components/create-post/create-post.component';
+import { PostCreateComponent } from './components/post-create/post-create.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { UserPostGuard } from './guards/user-post/user-post.guard';
-import { EditProjectPostComponent } from './components/edit-project-post/edit-project-post.component';
-import { CreateReportComponent } from './components/create-report/create-report.component';
-import { CreateReviewComponent } from './components/create-review/create-review.component';
+import { ProjectPostEditComponent } from './components/project-post-edit/project-post-edit.component';
+import { ReportCreateComponent } from './components/report-create/report-create.component';
+import { ReviewCreateComponent } from './components/review-create/review-create.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 
 const routes: Routes = [
@@ -39,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'create-post/:userId', 
-    component: CreatePostComponent,
+    component: PostCreateComponent,
     canActivate: [AuthGuard] 
   },
   {
@@ -48,17 +48,17 @@ const routes: Routes = [
   },
   {
     path: 'profile/:userId/project-posts/:postId/edit', 
-    component: EditProjectPostComponent,
+    component: ProjectPostEditComponent,
     canActivate: [AuthGuard, UserPostGuard]
   },
   { 
     path: 'report/:userId/:reportedUserId', 
-    component: CreateReportComponent,
+    component: ReportCreateComponent,
     canActivate: [AuthGuard],
   },
   { 
     path: 'review/:userId/:reviewedUserId', 
-    component: CreateReviewComponent,
+    component: ReviewCreateComponent,
     canActivate: [AuthGuard],
   },
   { 

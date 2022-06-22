@@ -1,17 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ThemePalette } from '@angular/material/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { map, Observable, of, startWith, tap } from 'rxjs';
-import { GlobalConstants } from 'src/app/common/global-constants';
 import { compareNumbers } from 'src/app/common/utilities';
 import { Category } from 'src/app/models/category';
 import { ProjectPost } from 'src/app/models/project-post';
-import { ServicePost } from 'src/app/models/service-post';
-import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { ProjectPostService } from 'src/app/services/project-post/project-post.service';
-import { ServicePostService } from 'src/app/services/service-post/service-post.service';
 
 @Component({
   selector: 'app-posts',
@@ -21,21 +16,18 @@ import { ServicePostService } from 'src/app/services/service-post/service-post.s
 export class PostsComponent implements OnInit {
 
   panelOpenState = false;
-  public filters: FormGroup;
+  filters: FormGroup;
+  categories: Category[];
   locationOptions: Set<string>;
   filteredLocationOptions: Observable<string[]>;
-  public categories: Category[];
-
-  public projectPosts: ProjectPost[]; 
-  public filteredProjectPosts: ProjectPost[];
-  //public servicePosts: ServicePost[];
+  projectPosts: ProjectPost[]; 
+  filteredProjectPosts: ProjectPost[];
 
   constructor(
+    public authService: AuthService,
     private formBuilder: FormBuilder,
     private projectPostService: ProjectPostService,
-    private servicePostService: ServicePostService,
     private categoryService: CategoryService,
-    public authService: AuthService,
   ) {
     this.filters = this.formBuilder.group({
       categoryCtrl: [],
@@ -51,7 +43,7 @@ export class PostsComponent implements OnInit {
     this.filteredProjectPosts = new Array<ProjectPost>();
     this.categories = new Array<Category>();
 
-    categoryService.getCategories().subscribe(result => {
+    this.categoryService.getCategories().subscribe(result => {
       if(result.body != null) {
         this.categories = result.body;
       }     

@@ -1,6 +1,5 @@
 import { JsonProperty } from "json-object-mapper";
 import { DateSerializerDeserializer } from "./date-serializer-deserializer";
-import { ReportReason } from "./report-reason";
 import { User } from "./user";
 
 export class Review {

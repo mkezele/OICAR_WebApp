@@ -1,0 +1,40 @@
+.nav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li:hover{
+    cursor: pointer;
+    color: #E040FB;
+}
+
+.color-green{
+ color: #69F0AE;   
+}
+
+.color-white{
+    color: white;   
+}
+
+.color-purple{
+    color: #E040FB;
+}
+
+.bold{
+    font-weight: 900;
+}

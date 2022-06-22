@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { FormValidationService } from 'src/app/services/form-validation/form-validation.service';
-import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,32 +10,29 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  public form: FormGroup;
-  public successfulAuthentication: boolean | undefined = undefined;
-  public showPassword = false;
-
+  hide = true;
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+  successfulAuthentication: boolean | undefined = undefined;
   private timeout = 1000;
 
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    public formValidationService: FormValidationService,
   ) { 
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
   }
 
   ngOnInit(): void {
   }
 
-  submit(){
-    if(this.form.valid){
-      let email = this.form.value.email.trim();
-      let passwordHash = btoa(this.form.value.password.trim());
+  formValid() {
+    return this.email.valid && this.password.valid;
+  }
+
+  submit() {
+    if(this.formValid()){
+      let email = this.email.value.trim();
+      let passwordHash = btoa(this.password.value.trim());
 
       this.authService.authenticateUser(email, passwordHash).subscribe(userId => {
         if(userId > 0){
@@ -49,10 +44,6 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-  }
-
-  toggleShowPassword() {
-    this.showPassword = !this.showPassword;
   }
 
 }

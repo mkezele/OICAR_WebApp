@@ -2,9 +2,11 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase, HttpStatusCode
 import { Injectable } from '@angular/core';
 import { ObjectMapper } from 'json-object-mapper';
 import { catchError, Observable, of, tap } from 'rxjs';
+import { UserLevel } from 'src/app/models/user-level';
 import { GlobalConstants } from '../../common/global-constants';
 import { User } from '../../models/user';
 import { ErrorService } from '../error/error.service';
+import { ReportReasonService } from '../report-reason/report-reason.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,9 @@ export class UserService {
   getUser(id: number): Observable<HttpResponse<User>> {
     return this.http.get<User>(`${GlobalConstants.usersUrl}/${id}`, this.httpOptions).pipe(
       tap(response => {
-        if (response.status == HttpStatusCode.Ok) {
+        if (response.status == HttpStatusCode.Ok && response.body != null) {
+          // fix when api is fixed
+          response.body.userLevel = new UserLevel(1, 'Basic');
           console.log(`User fetched, id = ${response.body?.idappUser}.`)
         } else {
           console.log(`User not found.`);

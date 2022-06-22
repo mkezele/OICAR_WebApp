@@ -13,17 +13,17 @@ import { Review } from 'src/app/models/review';
 import { ReviewService } from 'src/app/services/review/review.service';
 
 @Component({
-  selector: 'app-review-user',
-  templateUrl: './create-review.component.html',
-  styleUrls: ['./create-review.component.css']
+  selector: 'app-review-create',
+  templateUrl: './review-create.component.html',
+  styleUrls: ['./review-create.component.css']
 })
-export class CreateReviewComponent implements OnInit {
+export class ReviewCreateComponent implements OnInit {
 
-  public stepperOrientation: Observable<StepperOrientation>;
-  public comment: FormGroup; 
-  public successfulReviewCreation = false;
-  public reviewingUser: User | undefined = undefined;
-  public reviewedUser: User | undefined = undefined;
+  stepperOrientation: Observable<StepperOrientation>;
+  comment: FormGroup; 
+  successfulReviewCreation = false;
+  reviewingUser: User | undefined = undefined;
+  reviewedUser: User | undefined = undefined;
 
   private timeout = 1000;
 
@@ -31,11 +31,9 @@ export class CreateReviewComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private breakpointObserver: BreakpointObserver,
     private route: ActivatedRoute, 
-    private authService: AuthService,
     private userService: UserService,
     private reviewService: ReviewService,
-    private location: Location,
-    private router: Router,) { 
+    private location: Location,) { 
       this.stepperOrientation = this.breakpointObserver
         .observe('(min-width: 800px)')
         .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));

@@ -17,11 +17,11 @@ import { HttpStatusCode } from '@angular/common/http';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css']
+  selector: 'app-post-create',
+  templateUrl: './post-create.component.html',
+  styleUrls: ['./post-create.component.css']
 })
-export class CreatePostComponent implements OnInit {
+export class PostCreateComponent implements OnInit {
 
   public stepperOrientation: Observable<StepperOrientation>;
   public postType: FormGroup; 
@@ -166,7 +166,7 @@ export class CreatePostComponent implements OnInit {
 
     if(files != undefined) {
       for (let i = 0; i < (files?.length ?? 0); i++) {
-        servicePostImages.push(new ServicePostImage(0, servicePost.idservicePost, files[i].name, servicePost));
+        servicePostImages.push(new ServicePostImage(0, servicePost.idservicePost, files[i].name));
       }
     }
 

@@ -15,7 +15,7 @@ export class ReviewComponent implements OnInit {
   @Input() review!: Review;
   constructor(
     private userService: UserService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
   ) { }
 

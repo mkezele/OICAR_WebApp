@@ -15,11 +15,11 @@ import { ReportService } from 'src/app/services/report/report.service';
 import { User } from 'src/app/models/user';
 
 @Component({
-  selector: 'app-report-user',
-  templateUrl: './create-report.component.html',
-  styleUrls: ['./create-report.component.css']
+  selector: 'app-report-create',
+  templateUrl: './report-create.component.html',
+  styleUrls: ['./report-create.component.css']
 })
-export class CreateReportComponent implements OnInit {
+export class ReportCreateComponent implements OnInit {
 
   public stepperOrientation: Observable<StepperOrientation>;
   public reportReason: FormGroup; 

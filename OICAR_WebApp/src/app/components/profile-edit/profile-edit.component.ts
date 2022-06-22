@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogData } from 'src/app/models/dialog-data';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { FormValidationService } from 'src/app/services/form-validation/form-validation.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Location } from '@angular/common';
-import { HttpResponse, HttpStatusCode } from '@angular/common/http';
+import { HttpStatusCode } from '@angular/common/http';
+import { UserLevel } from 'src/app/models/user-level';
 
 @Component({
   selector: 'app-profile-edit',
@@ -18,17 +18,19 @@ import { HttpResponse, HttpStatusCode } from '@angular/common/http';
 })
 export class ProfileEditComponent implements OnInit {
 
-  public user: User | undefined = undefined;
-  public successfulUpdate: boolean | undefined = undefined;
-  public successfulDeletion: boolean | undefined = undefined;
-  public form: FormGroup;
-  public formValuesChanged = false;
+  user: User | undefined = undefined;
+  successfulUpdate: boolean | undefined = undefined;
+  successfulDeletion: boolean | undefined = undefined;
+  form: FormGroup;
+  formValuesChanged = false;
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.email]);
   
   private timeout = 1000;
 
   constructor(
-    public formValidationService: FormValidationService,
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private formBuilder: FormBuilder, 
     private route: ActivatedRoute, 
     private router: Router, 
@@ -36,21 +38,18 @@ export class ProfileEditComponent implements OnInit {
     private authService: AuthService,
     private location: Location,) {
       this.form = this.formBuilder.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
       });
   }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.route.snapshot.paramMap.get('userId'));
     this.userService.getUser(id).subscribe(result => {
-      if(result instanceof User){
-        this.user = result;
-      } else {
-        this.user = result.body != null ? result.body : undefined;
+      if (result.body != null) {
+        this.user = result.body;
       }
-      
 
       this.form.patchValue({
         firstName: this.user?.firstName,
