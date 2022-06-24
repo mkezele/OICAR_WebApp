@@ -1,40 +1,41 @@
 <div class="contentWidth centerVertically m-auto d-flex flex-column align-items-center p-4">
-    <h2 class="w-100 text-center">Edit profile</h2>
+    <h2 i18n class="w-100 text-center">Edit profile</h2>
     <form #f="ngForm" (ngSubmit)="submit()" class="w-100">
         <!-- Email -->
         <div>
             <mat-form-field appearance="fill" color="accent" class="w-100 mt-3">
-                <mat-label>Email</mat-label>
+                <mat-label i18n>Email</mat-label>
                 <input matInput placeholder="john.doe@example.com" [formControl]="email" readonly>
             </mat-form-field>
         </div>
         <!-- First name -->
         <div>
             <mat-form-field appearance="fill" color="accent" class="w-100">
-                <mat-label>First name</mat-label>
+                <mat-label i18n>First name</mat-label>
                 <input matInput placeholder="John" [formControl]="firstName" required>
-                <mat-error *ngIf="firstName.invalid">First name is required</mat-error>
+                <mat-error i18n *ngIf="firstName.invalid">First name is required</mat-error>
             </mat-form-field>   
         </div> 
         <!-- Last name -->
         <div>
             <mat-form-field appearance="fill" color="accent" class="w-100 mt-3">
-                <mat-label>Last name</mat-label>
+                <mat-label i18n>Last name</mat-label>
                 <input matInput placeholder="Doe" [formControl]="lastName" required>
-                <mat-error *ngIf="lastName.invalid">Last name is required</mat-error>
+                <mat-error i18n *ngIf="lastName.invalid">Last name is required</mat-error>
             </mat-form-field>   
         </div>      
         
         <div class="mt-3">
-            <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid || !formValuesChanged">Submit</button>
-            <button mat-raised-button color="primary" type="button" class="mx-3" (click)="changePassword()">Change password</button>
-            <button mat-raised-button color="warn" type="button" (click)="openDeleteProfileDialog()">Delete profile</button>
+            <button i18n mat-raised-button color="accent" type="submit" [disabled]="!form.valid || !formValuesChanged">Submit</button>
+            <button i18n mat-raised-button color="primary" type="button" class="mx-3" (click)="changePassword()">Change password</button>
+            <button i18n mat-raised-button color="warn" type="button" (click)="openDeleteProfileDialog()">Delete profile</button>
         </div>
     
-        <button mat-raised-button (click)="goBack()" class="mt-3">Go back</button>
+        <button i18n mat-raised-button (click)="goBack()" class="mt-3">Go back</button>
 
         <!-- Info message - unsuccessful update -->
         <mat-card 
+            i18n
             *ngIf="f.submitted && successfulUpdate != undefined && !successfulUpdate"
             class="bg-color-red mt-3">
             Something went wrong. Update unsuccessful. :(
@@ -42,6 +43,7 @@
     
         <!-- Info message - successful update -->
         <mat-card 
+            i18n
             *ngIf="f.submitted && successfulUpdate != undefined && successfulUpdate"
             class="bg-color-green text-black mt-3">
             Update successful. You will be redirected to your profile shortly.
@@ -49,6 +51,7 @@
 
         <!-- Info message - unsuccessful deletion -->
         <mat-card 
+            i18n    
             *ngIf="f.submitted && successfulDeletion != undefined && !successfulDeletion"
             class="bg-color-red mt-3">
             Something went wrong. Deletion unsuccessful. :(
@@ -56,6 +59,7 @@
 
         <!-- Info message - successful deletion -->
         <mat-card 
+            i18n
             *ngIf="f.submitted && successfulDeletion != undefined && successfulDeletion"
             class="bg-color-green text-black mt-3">
             Deletion successful. You will be redirected to your profile shortly.

@@ -87,7 +87,7 @@ export class ProfileEditComponent implements OnInit {
   openDeleteProfileDialog() {
     const dialogRef = this.dialog.open(
       DialogComponent,
-      { data: { title: 'Delete profile', text: 'Do you really want to delete your profile?' } as DialogData }
+      { data: { title: $localize`Delete profile`, text: $localize`Do you really want to delete your profile?` } as DialogData }
     );
     dialogRef.afterClosed().subscribe(result => {
       if(result){

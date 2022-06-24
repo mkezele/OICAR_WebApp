@@ -12,6 +12,9 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ProjectPostComponent implements OnInit {
 
+  yes = $localize`YES`
+  no = $localize`NO`
+
   @Input() projectPost!: ProjectPost;
   constructor(
     private categoryService: CategoryService,

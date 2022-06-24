@@ -11,38 +11,38 @@
     <table class="mb-3 color-black">
         <tbody>
             <tr>
-                <th class="w-25">Active</th>
+                <th i18n class="w-25">Active</th>
                 <td 
                     [ngClass]="{'color-green bold': projectPost.active == true, 'color-red': projectPost.active == false}">
-                    {{projectPost.active == true ? "YES" : "NO"}}
+                    {{projectPost.active == true ? yes : no}}
                 </td>
             </tr>
             <tr>
-                <th>Category</th>
+                <th i18n>Category</th>
                 <td>{{projectPost.category?.title}}</td>
             </tr>
             <tr>
-                <th>Place</th>
+                <th i18n>Place</th>
                 <td>{{projectPost.place}}</td>
             </tr>
             <tr>
-                <th>Duration in months</th>
+                <th i18n>Duration in months</th>
                 <td>{{projectPost.durationInMonths}}</td>
             </tr>
             <tr>
-                <th>Number of teammates</th>
+                <th i18n>Number of teammates</th>
                 <td>{{projectPost.numberOfTeammates}}</td>
             </tr>
             <tr>
-                <th>Comment</th>
+                <th i18n>Comment</th>
                 <td>{{projectPost.comment}}</td>
             </tr>
             <tr>
-                <th>Date of creation</th>
+                <th i18n>Date of creation</th>
                 <td>{{getDateString(projectPost.dateOfCreation)}}</td>
             </tr>
             <tr>
-                <th>User email</th>
+                <th i18n>User email</th>
                 <td><a href="mailto:{{projectPost.appUser?.email}}" class="p-0">{{projectPost.appUser?.email}}</a></td>
             </tr>
         </tbody>

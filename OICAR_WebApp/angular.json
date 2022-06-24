@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "OICAR_WebApp": {
+      "i18n": {
+        "sourceLocale":"en-US",
+        "locales": {
+          "hr-HR": "src/locale/messages.hr.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,6 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": [
+              "hr-HR"
+            ],
             "outputPath": "dist/oicar-web-app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -41,7 +50,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",

@@ -1,22 +1,23 @@
 <div class="contentWidth m-auto d-flex flex-column align-items-center rounded py-4">
-    <h2 class="w-100 text-center">Create post</h2>
+    <h2 i18n class="w-100 text-center">Create post</h2>
     <mat-stepper linear [orientation]="(stepperOrientation | async)!" class="w-100">
         <!-- Step - Post type -->
-        <mat-step [stepControl]="postType" label="Post type">
+        <mat-step [stepControl]="postType" i18n-label label="Post type">
             <form [formGroup]="postType">
                 <div>
-                    <mat-label>I am posting about</mat-label>
+                    <mat-label i18n>I am posting about</mat-label>
                 </div>
                 <mat-radio-group aria-label="I am posting about" formControlName="postTypeCtrl">
                     <div class="mt-3">
-                        <mat-radio-button value="1">A project I'm working on</mat-radio-button>
+                        <mat-radio-button i18n value="1">A project I'm working on</mat-radio-button>
                     </div>
                     <div class="my-3">
-                        <mat-radio-button value="2">A service I can offer</mat-radio-button>
+                        <mat-radio-button i18n value="2">A service I can offer</mat-radio-button>
                     </div>
                 </mat-radio-group>    
                 <div class="mt-3">
                     <button 
+                        i18n
                         mat-raised-button color="primary"
                         matStepperNext
                         [disabled]="!postType.valid" >
@@ -26,12 +27,12 @@
             </form>
         </mat-step>
         <!-- Step - details -->
-        <mat-step [stepControl]="details" label="Details">
+        <mat-step [stepControl]="details" i18n-label label="Details">
             <form #f="ngForm" [formGroup]="details" class="mt-3" enctype="multipart/form-data">
                 <!-- Category -->
                 <div class="mb-3">
                     <mat-form-field color="accent" appearance="fill" class="w-100">
-                        <mat-label>Category</mat-label>
+                        <mat-label i18n>Category</mat-label>
                         <mat-select formControlName="categoryCtrl" required>
                             <mat-option>--</mat-option>
                             <mat-option *ngFor="let category of categories" [value]="category">
@@ -43,42 +44,42 @@
                 <!-- Title   -->
                 <div>
                     <mat-form-field color="accent" appearance="fill" class="w-100">
-                        <mat-label>Title</mat-label>
+                        <mat-label i18n>Title</mat-label>
                         <input matInput formControlName="titleCtrl" placeholder="" required>
                     </mat-form-field>
                 </div>
                 <!-- Comment   -->
                 <div>
                     <mat-form-field color="accent" appearance="fill" class="w-100">
-                        <mat-label>Comment</mat-label>
+                        <mat-label i18n>Comment</mat-label>
                         <textarea matInput formControlName="commentCtrl" placeholder="" required></textarea>
                     </mat-form-field>
                 </div>
                 <!-- Place   -->
                 <div>
                     <mat-form-field color="accent" appearance="fill" class="w-100">
-                        <mat-label>Place</mat-label>
+                        <mat-label i18n>Place</mat-label>
                         <input matInput formControlName="placeCtrl" placeholder="Zagreb, Croatia" required>
                     </mat-form-field>
                 </div>
                 <!-- Duration   -->
                 <div *ngIf="postType.get('postTypeCtrl')?.value == 1">
                     <mat-form-field color="accent" appearance="fill" class="w-100">
-                        <mat-label>Duration in months</mat-label>
+                        <mat-label i18n>Duration in months</mat-label>
                         <input matInput type="number" formControlName="durationCtrl" placeholder="3" required>
                     </mat-form-field>
                 </div>
                 <!-- Number of teammates   -->
                 <div *ngIf="postType.get('postTypeCtrl')?.value == 1">
                     <mat-form-field color="accent" appearance="fill" class="w-100">
-                        <mat-label>Number of teammates</mat-label>
+                        <mat-label i18n>Number of teammates</mat-label>
                         <input matInput type="number" formControlName="numOfTeammatesCtrl" placeholder="3" required>
                     </mat-form-field>
                 </div>
                 <!-- Service post images   -->
                 <div *ngIf="postType.get('postTypeCtrl')?.value == 2" class="w-100">
                     <div>
-                        <mat-label>Images of your work (optional)</mat-label>
+                        <mat-label i18n>Images of your work (optional)</mat-label>
                     </div>
                     <input
                         type="file" 
@@ -90,8 +91,9 @@
                 </div>
                 <!-- Previous and next buttons -->
                 <div class="mt-3">
-                    <button mat-raised-button color="accent" matStepperPrevious>Previous</button>
+                    <button i18n mat-raised-button color="accent" matStepperPrevious>Previous</button>
                     <button 
+                        i18n
                         type="submit"
                         mat-raised-button color="primary"
                         class="mx-3"
@@ -103,6 +105,7 @@
 
                 <!-- Info message - unsuccessful post creation -->
                 <mat-card 
+                    i18n
                     *ngIf="f.submitted && successfulPostCreation != undefined && !successfulPostCreation"
                     class="bg-color-red mt-3">
                     Something went wrong. Post was not created. :(
@@ -110,6 +113,7 @@
             
                 <!-- Info message - successful post creation -->
                 <mat-card 
+                    i18n
                     *ngIf="f.submitted && successfulPostCreation != undefined && successfulPostCreation"
                     class="bg-color-green text-black mt-3">
                     Post was successfully created. You will be redirected to your profile shortly.
@@ -119,6 +123,7 @@
     </mat-stepper>
     <div>
         <button 
+        i18n
         mat-raised-button 
         class="mt-3"
         (click)="goBack()">

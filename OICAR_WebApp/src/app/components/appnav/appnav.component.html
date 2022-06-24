@@ -8,7 +8,7 @@
                 routerLink="/posts" 
                 class="mx-3 my-2">
                 <mat-icon>dashboard</mat-icon>
-                <div class="mx-3 w-100">Posts</div>
+                <div i18n class="mx-3 w-100">Posts</div>
             </li>
             <li 
                 *ngIf="!authService.userLoggedIn()" 
@@ -17,7 +17,7 @@
                 routerLink="/registration" 
                 class="mx-3 my-2">
                 <mat-icon>note_add</mat-icon>
-                <div class="mx-3 w-100">Registration</div>
+                <div i18n class="mx-3 w-100">Registration</div>
             </li>
             <li 
                 *ngIf="!authService.userLoggedIn()" 
@@ -26,7 +26,7 @@
                 routerLink="/login" 
                 class="mx-3 my-2">
                 <mat-icon>account_circle</mat-icon>
-                <div class="mx-3 w-100">Log in</div>
+                <div i18n class="mx-3 w-100">Log in</div>
             </li>
             <li 
                 *ngIf="authService.userLoggedIn()" 
@@ -35,7 +35,7 @@
                 routerLink="/profile/{{authService.getLoggedUserId()}}" 
                 class="mx-3 my-2">
                 <mat-icon>account_circle</mat-icon>
-                <div class="mx-3 w-100">Profile</div>
+                <div i18n class="mx-3 w-100">Profile</div>
             </li>
             <li 
                 *ngIf="authService.userLoggedIn()" 
@@ -43,7 +43,7 @@
                 (click)="openLogoutDialog()" 
                 class="mx-3 my-2">
                 <mat-icon>exit_to_app</mat-icon>
-                <button mat-button class="w-100">Log out</button>
+                <button i18n mat-button class="w-100">Log out</button>
             </li>
         </ul>
     </mat-sidenav>

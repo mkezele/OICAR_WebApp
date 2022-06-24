@@ -129,7 +129,7 @@ export class ProjectPostEditComponent implements OnInit {
   openDeletePostDialog() {
     const dialogRef = this.dialog.open(
       DialogComponent,
-      { data: { title: 'Delete post', text: 'Do you really want to delete post?' } as DialogData }
+      { data: { title: ($localize`Delete post`), text: ($localize`Do you really want to delete post?`) } as DialogData }
     );
     dialogRef.afterClosed().subscribe(result => {
       if(result){

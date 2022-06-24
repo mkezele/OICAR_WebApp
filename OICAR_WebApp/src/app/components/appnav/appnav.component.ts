@@ -45,7 +45,7 @@ export class AppnavComponent implements OnInit {
   openLogoutDialog() {
     const dialogRef = this.dialog.open(
       DialogComponent,
-      { data: { title: 'Log out', text: 'Do you really want to log out?' } as DialogData }
+      { data: { title: ($localize`Log out`), text: ($localize`Do you really want to log out?`) } as DialogData }
     );
     dialogRef.afterClosed().subscribe(result => {
       if(result){
