@@ -34,8 +34,23 @@ export class ReportService {
     );
   }
 
+    // GET all reports
+    getReports(): Observable<HttpResponse<Report[]>> {
+      return this.http.get<Report[]>(`${GlobalConstants.reportsUrl}`, this.httpOptions).pipe(
+        tap(response => {
+          if (response.status == HttpStatusCode.Ok) {
+            console.log(`Reports fetched.`)
+          } else {
+            console.log(`Reports not found.`);
+          }
+        }),
+        catchError(this.errorService.handleError<HttpResponse<Report[]>>(`getReports`))
+      );
+    }
+
   // POST
   createReport(report: Report): Observable<HttpResponse<Report>> {
+    console.log();
     return this.http.post<Report>(GlobalConstants.reportsUrl, ObjectMapper.serialize(report), this.httpOptions).pipe(
       tap(response => {
         if (response.status == HttpStatusCode.Created){

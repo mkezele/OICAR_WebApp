@@ -39,6 +39,20 @@ export class UserService {
     );
   }
 
+  // GET all users
+  getUsers(): Observable<HttpResponse<User[]>> {
+    return this.http.get<User[]>(`${GlobalConstants.usersUrl}`, this.httpOptions).pipe(
+      tap(response => {
+        if (response.status == HttpStatusCode.Ok) {
+          console.log(`Users fetched.`)
+        } else {
+          console.log(`Users not found.`);
+        }
+      }),
+      catchError(this.errorService.handleError<HttpResponse<User[]>>(`getUsers`))
+    );
+  }
+
   // POST
   createUser(user: User): Observable<HttpResponse<User>> {
     return this.http.post<User>(GlobalConstants.usersUrl, ObjectMapper.serialize(user), this.httpOptions).pipe(

@@ -1,0 +1,85 @@
+<div class="contentWidth m-auto d-flex flex-column align-items-center rounded py-4">
+    <h2 i18n class="w-100 text-center">Create suspension</h2>
+    <mat-stepper linear [orientation]="(stepperOrientation | async)!" class="w-100">
+        <mat-step [stepControl]="createSuspension" i18n-label label="Suspension">
+            <form #f="ngForm" [formGroup]="createSuspension" class="mt-3" enctype="multipart/form-data">
+                <!-- User -->
+                <div class="mb-3">
+                    <mat-form-field color="accent" appearance="fill" class="w-100">
+                        <mat-label i18n>User</mat-label>
+                        <mat-select formControlName="usersCtrl" required>
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let user of users" [value]="user.idappUser">
+                                {{user.firstName}} {{user.lastName}}, {{user.email}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <!-- Reason -->
+                <div class="mb-3">
+                    <mat-form-field color="accent" appearance="fill" class="w-100">
+                        <mat-label i18n>Reason</mat-label>
+                        <mat-select formControlName="reasonsCtrl" required>
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let reason of reasons" [value]="reason.idreportReason">
+                                {{reason.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <!-- Date range   -->
+                <mat-form-field color="accent" appearance="fill" class="w-100">
+                    <mat-label i18n>Pick a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="rangePicker" required>
+                      <input matStartDate formControlName="startDateCtrl" placeholder="Start date" required>
+                      <input matEndDate formControlName="endDateCtrl" placeholder="End date" required>
+                    </mat-date-range-input>
+                    <mat-hint i18n>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #rangePicker>
+                      <mat-date-range-picker-actions>
+                        <button i18n mat-button matDateRangePickerCancel>Cancel</button>
+                        <button i18n mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                      </mat-date-range-picker-actions>
+                    </mat-date-range-picker>
+                </mat-form-field>
+
+                <!-- Previous and next buttons -->
+                <div class="mt-3">
+                    <button 
+                        i18n
+                        type="submit"
+                        mat-raised-button color="primary"
+                        [disabled]="!allControlsValid()"
+                        (click)="submit()">
+                        Submit
+                    </button>
+                </div>
+
+                <!-- Info message - unsuccessful suspension creation -->
+                <mat-card 
+                    i18n
+                    *ngIf="f.submitted && successfulSuspensionCreation != undefined && !successfulSuspensionCreation"
+                    class="bg-color-red mt-3">
+                    Something went wrong. Suspension was not created. :(
+                </mat-card>
+            
+                <!-- Info message - successful suspension creation -->
+                <mat-card 
+                    i18n
+                    *ngIf="f.submitted && successfulSuspensionCreation != undefined && successfulSuspensionCreation"
+                    class="bg-color-green text-black mt-3">
+                    Suspension was successfully created. You will be redirected back shortly.
+                </mat-card>
+            </form>
+        </mat-step>
+    </mat-stepper>
+    <div>
+        <button 
+            mat-raised-button 
+            class="mt-3"
+            (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+    </div>
+</div>

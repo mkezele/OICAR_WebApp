@@ -61,19 +61,12 @@ export class ReportCreateComponent implements OnInit {
           }
         });
 
-        this.reportReasons = new Array<ReportReason>();
-
-        this.reportReasons.push(new ReportReason(1, "Dangerous or illegal", [], []))
-        this.reportReasons.push(new ReportReason(1, "Discriminatory", [], []))
-        this.reportReasons.push(new ReportReason(1, "Disrespectful", [], []))
-        this.reportReasons.push(new ReportReason(1, "Misinformation", [], []))  
-        this.reportReasons.push(new ReportReason(1, "Spam", [], []))    
-      
-        // reportReasonService.getReportReasons().subscribe(result => {
-        //   if(result.body != null) {
-        //     this.reportReasons = result.body;
-        //   }     
-        // });
+        this.reportReasons = new Array<ReportReason>();   
+        reportReasonService.getReportReasons().subscribe(result => {
+          if(result.body != null) {
+            this.reportReasons = result.body;
+          }     
+        });
     }
 
   ngOnInit(): void {

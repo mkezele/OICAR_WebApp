@@ -1,0 +1,36 @@
+<div class="d-flex flex-column rounded px-4 pt-4 bg-white">
+    <table class="mb-3 color-black">
+        <tbody>
+            <tr>
+                <th i18n class="column-width">Reported user</th>
+                <td 
+                    (click)="visitProfile(report.reportedUser.idappUser)"
+                    class="color-purple bold profile-link column-width">
+                    {{report.reportedUser?.firstName}} {{report.reportedUser?.lastName}}
+                </td>
+                <td>
+                    <a href="mailto:{{report.reportedUser?.email}}" class="p-0 column-width">{{report.reportedUser?.email}}</a>
+                </td>            
+            </tr>
+            <tr>
+            <th i18n>Reporting user</th>
+                <td 
+                    (click)="visitProfile(report.reportingUser.idappUser)"
+                    class="color-purple bold profile-link">
+                    {{report.reportingUser?.firstName}} {{report.reportingUser?.lastName}}
+                </td>
+                <td>
+                    <a href="mailto:{{report.reportingUser?.email}}" class="p-0">{{report.reportingUser?.email}}</a>
+                </td> 
+            </tr>
+            <tr>
+                <th i18n>Report reason</th>
+                <td>{{report.reportReason?.title}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+

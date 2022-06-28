@@ -38,6 +38,15 @@ import { ReviewCreateComponent } from './components/review-create/review-create.
 import { ReviewComponent } from './components/review/review.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
+import { ChatComponent } from './components/chat/chat.component';
+import { ReportComponent } from './components/report/report.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { SuspensionsComponent } from './components/suspensions/suspensions.component';
+import { SuspensionComponent } from './components/suspension/suspension.component';
+import { CreateSuspensionComponent } from './components/suspension-create/suspension-create.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { SuspensionEditComponent } from './components/suspension-edit/suspension-edit.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +67,13 @@ import {MatCardModule} from '@angular/material/card';
     ReportCreateComponent,
     ReviewCreateComponent,
     ReviewComponent,
+    ChatComponent,
+    ReportComponent,
+    ReportsComponent,
+    SuspensionsComponent,
+    SuspensionComponent,
+    CreateSuspensionComponent,
+    SuspensionEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +99,8 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatSidenavModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

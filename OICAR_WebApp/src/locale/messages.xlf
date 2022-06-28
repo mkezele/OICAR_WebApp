@@ -295,22 +295,44 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="1868606282505332204" datatype="html">
+        <source>Reports</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/appnav/appnav.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/reports/reports.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6089297686557664944" datatype="html">
+        <source>Suspensions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/appnav/appnav.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspensions/suspensions.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7507948636555938109" datatype="html">
         <source>Log out</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/appnav/appnav.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/appnav/appnav.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2551342930169006359" datatype="html">
         <source>Do you really want to log out?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/appnav/appnav.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2159130950882492111" datatype="html">
@@ -318,6 +340,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/dialog/dialog.component.html</context>
           <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">41,42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8720977247725652816" datatype="html">
@@ -425,10 +455,6 @@
           <context context-type="sourcefile">src/app/components/post-create/post-create.component.html</context>
           <context context-type="linenumber">2,3</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/profile/profile.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="8889746015553367857" datatype="html">
         <source>Post type</source>
@@ -484,11 +510,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">31,32</context>
+          <context context-type="linenumber">34,35</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
@@ -552,7 +578,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
@@ -610,6 +636,14 @@
           <context context-type="sourcefile">src/app/components/review-create/review-create.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="4944016260839151416" datatype="html">
         <source> Something went wrong. Post was not created. :( </source>
@@ -625,44 +659,47 @@
           <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1139322401632270189" datatype="html">
-        <source> Go back </source>
+      <trans-unit id="805021073728944072" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="ar"/>arrow_back<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/post-create/post-create.component.html</context>
-          <context context-type="linenumber">130</context>
+          <context context-type="linenumber">130,132</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8202984230323579433" datatype="html">
+        <source>+ New post</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/report-create/report-create.component.html</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/review-create/review-create.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="sourcefile">src/app/components/profile/profile.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="180660177324430106" datatype="html">
         <source> Filters </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5611592591303869712" datatype="html">
         <source>Status</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">18,19</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8204176479746810612" datatype="html">
         <source>Active</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
@@ -677,55 +714,55 @@
         <source>Not active</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7410432243549869948" datatype="html">
         <source>Duration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">50,51</context>
+          <context context-type="linenumber">53,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="471816275243265264" datatype="html">
         <source>Location</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">62,63</context>
+          <context context-type="linenumber">65,66</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4128754587576778535" datatype="html">
         <source>Project posts</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">87,88</context>
+          <context context-type="linenumber">90,91</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-view/profile-view.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile/profile.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="850141206373553334" datatype="html">
         <source>Service posts</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/posts/posts.component.html</context>
-          <context context-type="linenumber">92,93</context>
+          <context context-type="linenumber">95,97</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-view/profile-view.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile/profile.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5265161251609188502" datatype="html">
@@ -733,10 +770,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
           <context context-type="linenumber">2</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/profile/profile.component.html</context>
-          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5342432350421167093" datatype="html">
@@ -793,83 +826,79 @@
       <trans-unit id="6850167608793562441" datatype="html">
         <source>Delete profile</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.ts</context>
-          <context context-type="linenumber">90</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="734934965373819800" datatype="html">
-        <source>Go back</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1358507194907827612" datatype="html">
         <source> Something went wrong. Update unsuccessful. :( </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
-          <context context-type="linenumber">40,42</context>
+          <context context-type="linenumber">42,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1976238481426293183" datatype="html">
         <source> Update successful. You will be redirected to your profile shortly. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
-          <context context-type="linenumber">48,50</context>
+          <context context-type="linenumber">50,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2275585675405581807" datatype="html">
         <source> Something went wrong. Deletion unsuccessful. :( </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
-          <context context-type="linenumber">56,58</context>
+          <context context-type="linenumber">58,60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2528605471970242534" datatype="html">
         <source> Deletion successful. You will be redirected to your profile shortly. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.html</context>
-          <context context-type="linenumber">64,66</context>
+          <context context-type="linenumber">66,68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6846312198743388165" datatype="html">
         <source>Do you really want to delete your profile?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-edit/profile-edit.component.ts</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7430680760319628492" datatype="html">
-        <source>Review</source>
+      <trans-unit id="1655410515780051709" datatype="html">
+        <source> Review </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-view/profile-view.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/review-create/review-create.component.html</context>
-          <context context-type="linenumber">5,6</context>
+          <context context-type="linenumber">11,13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7008439939460403347" datatype="html">
-        <source>Report</source>
+      <trans-unit id="5945359866777111462" datatype="html">
+        <source> Report </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-view/profile-view.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3603506727718447426" datatype="html">
+        <source> Suspend </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/profile-view/profile-view.component.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/reports/reports.component.html</context>
+          <context context-type="linenumber">10,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9029286143304711365" datatype="html">
         <source>Reviews</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile-view/profile-view.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile/profile.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8370306245983482136" datatype="html">
@@ -879,11 +908,33 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5377078063439833222" datatype="html">
-        <source> Edit </source>
+      <trans-unit id="2871128429008859966" datatype="html">
+        <source> Edit profile </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/profile/profile.component.html</context>
-          <context context-type="linenumber">18,20</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6985160698230186096" datatype="html">
+        <source>Delete post</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/profile/profile.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.ts</context>
+          <context context-type="linenumber">132</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1475259568371737178" datatype="html">
+        <source>Do you really want to delete post?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/profile/profile.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.ts</context>
+          <context context-type="linenumber">132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6057645232534413363" datatype="html">
@@ -893,53 +944,32 @@
           <context context-type="linenumber">2,3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7902160100861149384" datatype="html">
-        <source> Delete post </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
-          <context context-type="linenumber">74</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="7252879114639601547" datatype="html">
         <source> Something went wrong. Post was not edited. :( </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5479033239185731549" datatype="html">
         <source> Post was successfully edited. You will be redirected to your profile shortly. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4700347710382618245" datatype="html">
         <source> Something went wrong. Post was not deleted. :( </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7907052074847118664" datatype="html">
         <source> Post was successfully deleted. You will be redirected to your profile shortly. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.html</context>
-          <context context-type="linenumber">107</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6985160698230186096" datatype="html">
-        <source>Delete post</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.ts</context>
-          <context context-type="linenumber">132</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1475259568371737178" datatype="html">
-        <source>Do you really want to delete post?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/project-post-edit/project-post-edit.component.ts</context>
-          <context context-type="linenumber">132</context>
+          <context context-type="linenumber">106</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5526162198504235859" datatype="html">
@@ -1001,6 +1031,10 @@
           <context context-type="sourcefile">src/app/components/report-create/report-create.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/report/report.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="6718370757611188601" datatype="html">
         <source> Something went wrong. User was not reported. :( </source>
@@ -1016,11 +1050,32 @@
           <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="4188194954154650666" datatype="html">
+        <source>Reported user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/report/report.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7900983500653922754" datatype="html">
+        <source>Reporting user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/report/report.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2799523183628434146" datatype="html">
         <source>Write a review for <x id="INTERPOLATION" equiv-text="{{reviewedUser?.firstName}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/review-create/review-create.component.html</context>
           <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7430680760319628492" datatype="html">
+        <source>Review</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/review-create/review-create.component.html</context>
+          <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7115692225767256689" datatype="html">
@@ -1035,6 +1090,185 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/review-create/review-create.component.html</context>
           <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1155726060393823619" datatype="html">
+        <source>Create suspension</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7695209021302072052" datatype="html">
+        <source>Suspension</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2392488717875840729" datatype="html">
+        <source>User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4775550080689015987" datatype="html">
+        <source>Reason</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="262704828998290971" datatype="html">
+        <source>Pick a date range</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8845219325208590180" datatype="html">
+        <source>MM/DD/YYYY</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4391289919356861627" datatype="html">
+        <source>Apply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3211528550257996619" datatype="html">
+        <source> Something went wrong. Suspension was not created. :( </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8318113854324085373" datatype="html">
+        <source> Suspension was successfully created. You will be redirected back shortly. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-create/suspension-create.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4661359858772892011" datatype="html">
+        <source>Edit suspension</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4985762142590576438" datatype="html">
+        <source> Something went wrong. Suspension was not updated. :( </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4568496040563822258" datatype="html">
+        <source> Suspension was successfully updated. You will be redirected back shortly. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9161113178324209933" datatype="html">
+        <source> Something went wrong. Suspension was not deleted. :( </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4659771573689984926" datatype="html">
+        <source> Suspension was successfully deleted. You will be redirected back shortly. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9214068293940750920" datatype="html">
+        <source>Delete suspension</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspensions/suspensions.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2234318518632165300" datatype="html">
+        <source>Do you really want to delete this suspension?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension-edit/suspension-edit.component.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspensions/suspensions.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1616526708257596698" datatype="html">
+        <source>Suspended user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension/suspension.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7976184591391417543" datatype="html">
+        <source>Suspension reason</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension/suspension.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="888341446683346521" datatype="html">
+        <source>Start date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension/suspension.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="126074860850048964" datatype="html">
+        <source>End date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspension/suspension.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2584813661813634869" datatype="html">
+        <source>+ New suspension</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/suspensions/suspensions.component.html</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
     </body>

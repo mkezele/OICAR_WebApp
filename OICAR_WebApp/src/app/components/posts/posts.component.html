@@ -1,5 +1,8 @@
 <div class="p-4">
     <h2 i18n class="text-center">Posts</h2>
+    <div class="d-flex flex-column flex-md-row justify-content-center mb-4">
+        <button i18n mat-raised-button color="accent" routerLink="/create-post/{{authService.getLoggedUserId()}}">+ New post</button>
+    </div>
     <mat-accordion>
         <mat-expansion-panel 
             (opened)="panelOpenState = true"
@@ -90,9 +93,7 @@
             </div>
         </mat-tab>
         <mat-tab i18n-label label="Service posts">
-            <!-- <div *ngFor="let post of servicePosts" class="mt-3">
-                <app-service-post [servicePost]="post"></app-service-post>
-            </div>  -->
+
         </mat-tab>
     </mat-tab-group>
 </div>

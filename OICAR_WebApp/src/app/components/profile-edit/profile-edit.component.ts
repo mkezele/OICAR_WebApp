@@ -9,7 +9,6 @@ import { UserService } from 'src/app/services/user/user.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Location } from '@angular/common';
 import { HttpStatusCode } from '@angular/common/http';
-import { UserLevel } from 'src/app/models/user-level';
 
 @Component({
   selector: 'app-profile-edit',

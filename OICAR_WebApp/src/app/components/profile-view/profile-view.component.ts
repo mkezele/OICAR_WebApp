@@ -4,13 +4,12 @@ import { ProjectPost } from 'src/app/models/project-post';
 import { ServicePost } from 'src/app/models/service-post';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/services/profile/profile.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Review } from 'src/app/models/review';
 import { ReviewService } from 'src/app/services/review/review.service';
+import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
   selector: 'app-profile-view',
@@ -19,10 +18,12 @@ import { ReviewService } from 'src/app/services/review/review.service';
 })
 export class ProfileViewComponent implements OnInit {
 
-  public user: User | undefined;
+  public viewedUser: User | undefined;
+  public viewingUser: User | undefined;
   public projectPosts: ProjectPost[];
   public servicePosts: ServicePost[];
   public reviews: Review[];
+  public adminUserLevelId = GlobalConstants.adminUserLevelId;
 
   constructor(
     private route: ActivatedRoute, 
@@ -33,25 +34,27 @@ export class ProfileViewComponent implements OnInit {
       this.projectPosts = new Array<ProjectPost>();
       this.servicePosts = new Array<ServicePost>();
       this.reviews = new Array<Review>();
-
-      const userId = parseInt(this.route.snapshot.paramMap.get('viewedUserId') ?? '0');
-      this.userService.getUser(userId).subscribe(result => { 
-        this.user = result.body ?? undefined; 
-
-        if(this.user !== undefined){
-          this.profileService.getUserProjectPosts(this.user.idappUser).subscribe(postsResult => {
+      const viewedUserId = parseInt(this.route.snapshot.paramMap.get('viewedUserId') ?? '0');
+      this.userService.getUser(viewedUserId).subscribe(result => { 
+        this.viewedUser = result?.body ?? undefined; 
+        if(this.viewedUser !== undefined){
+          this.profileService.getUserProjectPosts(this.viewedUser.idappUser).subscribe(postsResult => {
             if(postsResult.body != null){
               this.projectPosts = postsResult.body;
               this.projectPosts.sort((a, b) => -compareNumbers(a.dateOfCreation.valueOf(), b.dateOfCreation.valueOf()));
             }  
           });
-          this.reviewService.getUserReviews(this.user.idappUser).subscribe(result => {
+          this.reviewService.getUserReviews(this.viewedUser.idappUser).subscribe(result => {
             if(result.body != null){
               this.reviews = result.body;
               this.reviews.sort((a, b) => -compareNumbers(a.dateOfCreation.valueOf(), b.dateOfCreation.valueOf()));
             }  
           });
         }
+      });
+      const viewingUserId = parseInt(this.route.snapshot.paramMap.get('userId') ?? '0');
+      this.userService.getUser(viewingUserId).subscribe(result => { 
+        this.viewingUser = result?.body ?? undefined; 
       });
     }
 

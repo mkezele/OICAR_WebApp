@@ -27,7 +27,7 @@ export class PostCreateComponent implements OnInit {
   public postType: FormGroup; 
   public details: FormGroup;
   public categories: Category[];
-  public successfulPostCreation = false; 
+  public successfulPostCreation : boolean | undefined = undefined; 
 
   private timeout = 1000;
   private files: FileList | undefined;

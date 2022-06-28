@@ -70,4 +70,17 @@ export class Report {
     get reportingUser(): User {
         return this._reportingUser;
     }
+
+    // setters
+    set reportingUser(reportingUser: User) {
+        this._reportingUser = reportingUser;
+    }
+
+    set reportedUser(reportedUser: User) {
+        this._reportedUser = reportedUser;
+    }
+
+    set reportReason(reportReason: ReportReason) {
+        this._reportReason = reportReason;
+    }
 }

@@ -1,0 +1,24 @@
+.color-purple{
+    color: #7B1FA2
+}
+
+.bold{
+    font-weight: 900;
+}
+
+.color-black{
+    color: black;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.profile-link:hover{
+    cursor: pointer;
+    color: #E040FB;
+}
+
+.column-width{
+    width: 33.3%;
+}

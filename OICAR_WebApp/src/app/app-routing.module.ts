@@ -13,6 +13,11 @@ import { ProjectPostEditComponent } from './components/project-post-edit/project
 import { ReportCreateComponent } from './components/report-create/report-create.component';
 import { ReviewCreateComponent } from './components/review-create/review-create.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { AdminGuard } from './guards/admin/admin.guard';
+import { SuspensionsComponent } from './components/suspensions/suspensions.component';
+import { CreateSuspensionComponent } from './components/suspension-create/suspension-create.component';
+import { SuspensionEditComponent } from './components/suspension-edit/suspension-edit.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: 'posts', pathMatch: 'full' },
@@ -62,6 +67,36 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { 
+    path: 'reports/:userId', 
+    component: ReportsComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  { 
+    path: 'suspensions/:userId/:suspensionId/edit', 
+    component: SuspensionEditComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  { 
+    path: 'suspensions/:userId', 
+    component: SuspensionsComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  { 
+    path: 'create-suspension/:userId/:suspendedUserId/:suspensionReasonId', 
+    component: CreateSuspensionComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  { 
+    path: 'create-suspension/:userId/:suspendedUserId', 
+    component: CreateSuspensionComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  { 
+    path: 'create-suspension/:userId', 
+    component: CreateSuspensionComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  { 
     path: '**', component: PageNotFoundComponent 
   },
 ];
@@ -71,3 +106,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+ 

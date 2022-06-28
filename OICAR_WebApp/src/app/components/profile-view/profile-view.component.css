@@ -1,3 +1,11 @@
 a:hover{
     color: #E040FB;
 }
+
+.bg-yellow{
+    background-color: #FFEB3B;
+}
+
+.color-black{
+    color: black;
+}

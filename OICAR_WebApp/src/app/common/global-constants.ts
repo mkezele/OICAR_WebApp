@@ -1,6 +1,7 @@
 export class GlobalConstants {
 
     public static appTitle: string = "TeamUp";
+    public static adminUserLevelId = 2;
     
     // api endpoints
     private static scheme = 'http://';
@@ -16,8 +17,10 @@ export class GlobalConstants {
     private static profileFileName = '/Profile';
     private static usersPostsFileName = '/UsersPosts';
     private static reportReasonsFileName = '/ReportReason';
-    private static reportsFileName = '/Report';
-    private static reviewsFileName = '/Review';    
+    private static reportsFileName = '/api/Report';
+    private static reviewsFileName = '/Review';
+    private static userLevelFileName = '/UserLevel';
+    private static suspensionsFileName = '/Suspension';    
 
     public static urlBase = `${ this.scheme }${ this.host }${ this.port }`;
     
@@ -30,6 +33,8 @@ export class GlobalConstants {
     public static reportReasonsUrl = `${ this.urlBase }${ this.reportReasonsFileName }`;
     public static reportsUrl = `${ this.urlBase }${ this.reportsFileName }`;
     public static reviewsUrl = `${ this.urlBase }${ this.reviewsFileName }`;
+    public static userLevelsUrl = `${ this.urlBase }${ this.userLevelFileName }`;
+    public static suspensionsUrl = `${ this.urlBase }${ this.suspensionsFileName }`;
 
     // local storage keys
     public static userId = 'userId';

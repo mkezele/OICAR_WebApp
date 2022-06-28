@@ -1,0 +1,32 @@
+.bg-color-red{
+    background-color: #F44336;
+}
+
+.bg-color-green{
+    background-color: #69F0AE;
+}
+
+.text-black{
+    color: black;
+}
+
+/* small */
+@media only screen and (max-width: 768px) {
+    .contentWidth{
+        width: 100%;
+    }
+}
+
+/* medium */
+@media only screen and (min-width: 768px) {
+    .contentWidth{
+        width: 75%;
+    }
+}
+
+/* large */
+@media only screen and (min-width: 992px) {
+    .contentWidth{
+        width: 50%;
+    }
+} 

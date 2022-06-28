@@ -1,13 +1,18 @@
+import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { compareNumbers } from 'src/app/common/utilities';
+import { DialogData } from 'src/app/models/dialog-data';
 import { ProjectPost } from 'src/app/models/project-post';
 import { Review } from 'src/app/models/review';
 import { ServicePost } from 'src/app/models/service-post';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import { ProjectPostService } from 'src/app/services/project-post/project-post.service';
 import { ReviewService } from 'src/app/services/review/review.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -24,6 +29,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private reviewService: ReviewService,
+    private projectPostService: ProjectPostService,
+    private dialog: MatDialog,
     private profileService: ProfileService,) {
       this.projectPosts = new Array<ProjectPost>();
       this.servicePosts = new Array<ServicePost>();
@@ -54,6 +61,26 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  openDeleteProjectPostDialog(post: ProjectPost) {
+    const dialogRef = this.dialog.open(
+      DialogComponent,
+      { data: { title: ($localize`Delete post`), text: ($localize`Do you really want to delete post?`) } as DialogData }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.deleteProjectPost(post.idprojectPost);
+      }
+    });
+  }
+
+  deleteProjectPost(id: number) {
+    this.projectPostService.deleteProjectPost(id).subscribe(result => {
+      if(result != undefined && result.status == HttpStatusCode.NoContent){
+        window.location.reload();
+      }
+    });
   }
 
 }

@@ -10,6 +10,7 @@ import { ServicePost } from 'src/app/models/service-post';
 import { Suspension } from 'src/app/models/suspension';
 import { User } from 'src/app/models/user';
 import { UserLevel } from 'src/app/models/user-level';
+import { UserLevelService } from 'src/app/services/user-level/user-level.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -29,6 +30,7 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
+    private userLevelService: UserLevelService,
   ) { 
 
   }
@@ -52,35 +54,42 @@ export class RegistrationComponent implements OnInit {
   }
 
   addUser(firstName: string, lastName: string, email: string, passwordHash: string): void {
-    const newUser = new User(
-      0,
-      firstName,
-      lastName,
-      email,
-      passwordHash,
-      '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-      false,
-      1,
-      // fix when api is fixed
-      new UserLevel(1, 'Basic'),
-      new Array<ProjectPost>(),
-      new Array<Report>(),
-      new Array<Report>(),
-      new Array<Review>(),
-      new Array<Review>(),
-      new Array<ServicePost>(),
-      new Array<Suspension>()
-    ); 
-
-    this.userService.createUser(newUser)
-      .subscribe(result => {
-        if(result.status == HttpStatusCode.Created){
-          this.successfulRegistration = true;
-          sessionStorage.setItem(GlobalConstants.userId, result.body?.idappUser.toString() ?? '');
-          setTimeout(() => { this.router.navigate([`/profile/${result.body?.idappUser}`]); }, this.timeout);
-        } else {
-          this.successfulRegistration = false;
+    this.userLevelService.getUserLevels()
+    .subscribe(result => {
+      if(result.status == HttpStatusCode.Ok){
+        let basicUserLevel = result.body?.find(ul => ul.title == "Basic"); 
+        if(basicUserLevel != undefined){
+          const newUser = new User(
+            0,
+            firstName,
+            lastName,
+            email,
+            passwordHash,
+            '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+            false,
+            basicUserLevel.iduserLevel,
+            basicUserLevel,
+            new Array<ProjectPost>(),
+            new Array<Report>(),
+            new Array<Report>(),
+            new Array<Review>(),
+            new Array<Review>(),
+            new Array<ServicePost>(),
+            new Array<Suspension>()
+          ); 
+      
+          this.userService.createUser(newUser)
+            .subscribe(result => {
+              if(result.status == HttpStatusCode.Created){
+                this.successfulRegistration = true;
+                sessionStorage.setItem(GlobalConstants.userId, result.body?.idappUser.toString() ?? '');
+                setTimeout(() => { this.router.navigate([`/profile/${result.body?.idappUser}`]); }, this.timeout);
+              } else {
+                this.successfulRegistration = false;
+              }
+            });
         }
-      });
+      }
+    });
   }
 }

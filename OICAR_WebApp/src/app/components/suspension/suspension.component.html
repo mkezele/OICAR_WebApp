@@ -1,0 +1,37 @@
+<div class="d-flex flex-column rounded px-4 pt-4 bg-white">
+    <table class="mb-3 color-black">
+        <tbody>
+            <tr>
+                <th i18n class="column-width">Suspended user</th>
+                <td 
+                    (click)="visitProfile(suspension.appUserId)"
+                    class="color-purple bold profile-link column-width">
+                    {{suspendedUser?.firstName}} {{suspendedUser?.lastName}}
+                </td>
+                <td>
+                    <a href="mailto:{{suspendedUser?.email}}" class="p-0 column-width">{{suspendedUser?.email}}</a>
+                </td>            
+            </tr>
+            <tr>
+                <th i18n>Suspension reason</th>
+                <td>
+                    {{suspensionReason?.title}}
+                </td>
+            </tr>
+            <tr>
+                <th i18n>Start date</th>
+                <td>
+                    {{getDateString(suspension.startDate)}}
+                </td>
+            </tr>
+            <tr>
+            <th i18n>End date</th>
+                <td>
+                    {{getDateString(suspension.endDate)}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

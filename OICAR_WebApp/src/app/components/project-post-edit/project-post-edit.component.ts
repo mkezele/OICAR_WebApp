@@ -143,7 +143,6 @@ export class ProjectPostEditComponent implements OnInit {
       this.projectPostService.deleteProjectPost(this.post.idprojectPost).subscribe(result => {
         if(result != undefined && result.status == HttpStatusCode.NoContent){
           this.successfulPostDeletion = true;
-          console.log(`/profile/${this.post?.appUserId}`);
           setTimeout(() => { this.router.navigate([`/profile/${this.post?.appUserId}`]); }, this.timeout)
         } else {
           this.successfulPostDeletion = false;
