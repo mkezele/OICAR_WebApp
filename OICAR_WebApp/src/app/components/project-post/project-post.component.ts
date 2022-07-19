@@ -16,6 +16,7 @@ export class ProjectPostComponent implements OnInit {
   no = $localize`NO`
 
   @Input() projectPost!: ProjectPost;
+  
   constructor(
     private categoryService: CategoryService,
     private userService: UserService,
@@ -25,15 +26,15 @@ export class ProjectPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categoryService.getCategory(this.projectPost.categoryId).subscribe(result => {
+    this.categoryService.getCategory(this.projectPost?.categoryId).subscribe(result => {
       if(result.status == HttpStatusCode.Ok && result.body != null){
         this.projectPost.category = result.body;
       }
     });
 
-    this.userService.getUser(this.projectPost.appUserId).subscribe(result => {
+    this.userService.getUser(this.projectPost?.appUserId).subscribe(result => {
       if(result.status == HttpStatusCode.Ok && result.body != null){
-        this.projectPost.appUser = result.body;
+          this.projectPost.appUser = result.body;
       }
     });
   }

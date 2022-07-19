@@ -21,7 +21,7 @@ export class ReviewCreateComponent implements OnInit {
 
   stepperOrientation: Observable<StepperOrientation>;
   comment: FormGroup; 
-  successfulReviewCreation = false;
+  successfulReviewCreation: boolean | undefined = undefined;
   reviewingUser: User | undefined = undefined;
   reviewedUser: User | undefined = undefined;
 
@@ -78,6 +78,8 @@ export class ReviewCreateComponent implements OnInit {
         if(result != undefined && result.status == HttpStatusCode.Created){
           this.successfulReviewCreation = true;
           setTimeout(() => { this.location.back(); }, this.timeout);
+        } else {
+          this.successfulReviewCreation = false;
         }
       });
     }

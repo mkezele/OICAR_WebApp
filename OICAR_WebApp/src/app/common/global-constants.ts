@@ -17,7 +17,7 @@ export class GlobalConstants {
     private static profileFileName = '/Profile';
     private static usersPostsFileName = '/UsersPosts';
     private static reportReasonsFileName = '/ReportReason';
-    private static reportsFileName = '/api/Report';
+    private static reportsFileName = '/Report';
     private static reviewsFileName = '/Review';
     private static userLevelFileName = '/UserLevel';
     private static suspensionsFileName = '/Suspension';    

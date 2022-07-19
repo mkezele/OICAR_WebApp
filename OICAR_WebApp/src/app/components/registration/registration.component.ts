@@ -1,6 +1,6 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { ProjectPost } from 'src/app/models/project-post';
@@ -9,7 +9,6 @@ import { Review } from 'src/app/models/review';
 import { ServicePost } from 'src/app/models/service-post';
 import { Suspension } from 'src/app/models/suspension';
 import { User } from 'src/app/models/user';
-import { UserLevel } from 'src/app/models/user-level';
 import { UserLevelService } from 'src/app/services/user-level/user-level.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -44,7 +43,7 @@ export class RegistrationComponent implements OnInit {
 
   submit(){
     if(this.formValid()){
-      this.addUser(
+      this.createUser(
         this.firstName.value.trim(),
         this.lastName.value.trim(),
         this.email.value.trim(),
@@ -53,8 +52,8 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  addUser(firstName: string, lastName: string, email: string, passwordHash: string): void {
-    this.userLevelService.getUserLevels()
+  async createUser(firstName: string, lastName: string, email: string, passwordHash: string) {
+    return await this.userLevelService.getUserLevels()
     .subscribe(result => {
       if(result.status == HttpStatusCode.Ok){
         let basicUserLevel = result.body?.find(ul => ul.title == "Basic"); 
@@ -84,8 +83,10 @@ export class RegistrationComponent implements OnInit {
                 this.successfulRegistration = true;
                 sessionStorage.setItem(GlobalConstants.userId, result.body?.idappUser.toString() ?? '');
                 setTimeout(() => { this.router.navigate([`/profile/${result.body?.idappUser}`]); }, this.timeout);
+                return true;
               } else {
                 this.successfulRegistration = false;
+                return false;
               }
             });
         }

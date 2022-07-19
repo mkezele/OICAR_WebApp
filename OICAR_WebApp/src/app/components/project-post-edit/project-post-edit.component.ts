@@ -139,7 +139,7 @@ export class ProjectPostEditComponent implements OnInit {
   }
 
   deleteProjectPost() {
-    if(this.post != undefined){
+    if(this.post != undefined && this.post.idprojectPost != undefined){
       this.projectPostService.deleteProjectPost(this.post.idprojectPost).subscribe(result => {
         if(result != undefined && result.status == HttpStatusCode.NoContent){
           this.successfulPostDeletion = true;

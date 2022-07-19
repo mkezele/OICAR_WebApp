@@ -1,13 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ReviewCreateComponent } from './review-create.component';
 
-describe('ReviewUserComponent', () => {
+describe('ReviewCreateComponent', () => {
   let component: ReviewCreateComponent;
   let fixture: ComponentFixture<ReviewCreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule ],
       declarations: [ ReviewCreateComponent ]
     })
     .compileComponents();

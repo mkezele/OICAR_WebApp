@@ -8,7 +8,7 @@
                 <div class="mb-3">
                     <mat-form-field color="accent" appearance="fill" class="w-100">
                         <mat-label i18n>Category</mat-label>
-                        <mat-select formControlName="categoryCtrl" required>
+                        <mat-select formControlName="categoryCtrl" required ngDefaultControl>
                             <mat-option>--</mat-option>
                             <mat-option *ngFor="let category of categories" [value]="category.idcategory">
                                 {{category.title}}
@@ -52,7 +52,7 @@
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-checkbox i18n formControlName="activeCtrl" class="w-100">Active</mat-checkbox>
+                    <mat-checkbox i18n formControlName="activeCtrl" class="w-100" ngDefaultControl>Active</mat-checkbox>
                 </div>
                 <!-- Submit button -->
                 <!-- Previous and next buttons -->

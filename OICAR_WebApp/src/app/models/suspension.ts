@@ -1,15 +1,18 @@
 import { JsonProperty } from "json-object-mapper";
 import { DateSerializerDeserializer } from "./date-serializer-deserializer";
+import { NumberSerializerDeserializer } from "./number-serializer-deserializer";
 
 export class Suspension { 
     
     @JsonProperty({ name: "idsuspension" })
-    private _idsuspension: number;
+    private _idsuspension: number | undefined;
 
     @JsonProperty({ name: "appUserId" })
+    // @JsonProperty({ name: "appUserId", type: Number, serializer: NumberSerializerDeserializer, deserializer: NumberSerializerDeserializer })
     private _appUserId: number;
 
     @JsonProperty({ name: "reportReasonId" })
+    // @JsonProperty({ name: "reportReasonId", type: Number, serializer: NumberSerializerDeserializer, deserializer: NumberSerializerDeserializer })
     private _reportReasonId: number;
 
     @JsonProperty({ name: "startDate", type: Date, serializer: DateSerializerDeserializer, deserializer: DateSerializerDeserializer })
@@ -19,7 +22,7 @@ export class Suspension {
     private _endDate: Date;
 
     constructor(
-        idsuspension: number, 
+        idsuspension: number,
         appUserId: number,
         reportReasonId: number,
         startDate: Date,
@@ -32,7 +35,7 @@ export class Suspension {
     }
 
     // getters
-    get idsuspension(): number {
+    get idsuspension(): number | undefined {
         return this._idsuspension;
     }
 
@@ -53,7 +56,7 @@ export class Suspension {
     }
 
     // setters
-    set idsuspension(idsuspension: number) {
+    set idsuspension(idsuspension: number | undefined) {
         this._idsuspension = idsuspension;
     }
 

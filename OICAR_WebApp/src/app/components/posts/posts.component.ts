@@ -42,7 +42,7 @@ export class PostsComponent implements OnInit {
     this.projectPosts = new Array<ProjectPost>();
     this.filteredProjectPosts = new Array<ProjectPost>();
     this.categories = new Array<Category>();
-
+    
     this.categoryService.getCategories().subscribe(result => {
       if(result.body != null) {
         this.categories = result.body;
@@ -51,10 +51,10 @@ export class PostsComponent implements OnInit {
 
     this.projectPostService.getProjectPosts().subscribe(result => {
       if(result.body != null){
-        this.projectPosts = result.body;
+        this.projectPosts = result.body.filter(p => p.deleted === false);
         this.filteredProjectPosts = 
           this.projectPosts
-            .filter(p => p.active == true)
+            .filter(p => p.active == true && p.deleted === false)
             .sort((a, b) => -compareNumbers(a.dateOfCreation.valueOf(), b.dateOfCreation.valueOf()));
         this.locationOptions = new Set<string>(this.projectPosts.map(p => p.place));
       }  

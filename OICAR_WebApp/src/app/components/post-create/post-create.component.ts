@@ -73,16 +73,15 @@ export class PostCreateComponent implements OnInit {
   }
 
   submit() {
-    this.postType.get('postTypeCtrl')?.value == 1 ? this.addProjectPost() : this.addServicePost();
+    this.postType.get('postTypeCtrl')?.value == 1 ? this.createProjectPost() : this.addServicePost();
   }
 
-  addProjectPost(): void {
-    this.userService.getUser(this.authService.getLoggedUserId()).subscribe(userResult => {
+  async createProjectPost() {
+    return await this.userService.getUser(this.authService.getLoggedUserId()).subscribe(userResult => {
       if(userResult != undefined && userResult.status == HttpStatusCode.Ok && userResult.body != null) {
         this.categoryService.getCategory(this.details.get('categoryCtrl')?.value.idcategory).subscribe(categoryResult => {
           if(categoryResult.status == HttpStatusCode.Ok && categoryResult.body != null){
             const projectPost = new ProjectPost(
-              0,
               this.authService.getLoggedUserId(),
               this.details.get('categoryCtrl')?.value.idcategory,
               true,
@@ -101,6 +100,9 @@ export class PostCreateComponent implements OnInit {
               if(pPostResult != undefined && pPostResult.status == HttpStatusCode.Created){
                 this.successfulPostCreation = true;
                 setTimeout(() => { this.router.navigate([`/profile/${userResult.body?.idappUser}`]); }, this.timeout);
+                return true;
+              } else {
+                return false;
               }
             });
           }

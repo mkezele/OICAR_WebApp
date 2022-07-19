@@ -7,7 +7,7 @@
                 <div>
                     <mat-label i18n>I am posting about</mat-label>
                 </div>
-                <mat-radio-group aria-label="I am posting about" formControlName="postTypeCtrl">
+                <mat-radio-group aria-label="I am posting about" formControlName="postTypeCtrl" ngDefaultControl>
                     <div class="mt-3">
                         <mat-radio-button i18n value="1">A project I'm working on</mat-radio-button>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="mb-3">
                     <mat-form-field color="accent" appearance="fill" class="w-100">
                         <mat-label i18n>Category</mat-label>
-                        <mat-select formControlName="categoryCtrl" required>
+                        <mat-select formControlName="categoryCtrl" required ngDefaultControl>
                             <mat-option>--</mat-option>
                             <mat-option *ngFor="let category of categories" [value]="category">
                                 {{category.title}}

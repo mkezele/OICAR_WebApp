@@ -7,7 +7,7 @@
                 <div class="mb-3">
                     <mat-form-field color="accent" appearance="fill" class="w-100">
                         <mat-label i18n>User</mat-label>
-                        <mat-select formControlName="usersCtrl" required>
+                        <mat-select formControlName="usersCtrl" required ngDefaultControl>
                             <mat-option>--</mat-option>
                             <mat-option *ngFor="let user of users" [value]="user.idappUser">
                                 {{user.firstName}} {{user.lastName}}, {{user.email}}
@@ -19,7 +19,7 @@
                 <div class="mb-3">
                     <mat-form-field color="accent" appearance="fill" class="w-100">
                         <mat-label i18n>Reason</mat-label>
-                        <mat-select formControlName="reasonsCtrl" required>
+                        <mat-select formControlName="reasonsCtrl" required ngDefaultControl>
                             <mat-option>--</mat-option>
                             <mat-option *ngFor="let reason of reasons" [value]="reason.idreportReason">
                                 {{reason.title}}

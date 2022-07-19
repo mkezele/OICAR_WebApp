@@ -6,7 +6,7 @@ import { User } from "./user";
 export class ProjectPost { 
 
     @JsonProperty({ name: "idprojectPost" })
-    private _idprojectPost: number;
+    private _idprojectPost: number | undefined;
 
     @JsonProperty({ name: "appUserId" })
     private _appUserId: number;
@@ -45,7 +45,6 @@ export class ProjectPost {
     private _category: Category;
 
     constructor(
-        idprojectPost: number, 
         appUserId: number,
         categoryId: number,
         active: boolean,
@@ -58,7 +57,6 @@ export class ProjectPost {
         deleted: boolean,
         appUser: User,
         category: Category) {
-            this._idprojectPost = idprojectPost;
             this._appUserId = appUserId;
             this._categoryId = categoryId;
             this._active = active;
@@ -73,8 +71,38 @@ export class ProjectPost {
             this._category = category;
     }
 
+
+    // constructor(
+    //     idprojectPost: number, 
+    //     appUserId: number,
+    //     categoryId: number,
+    //     active: boolean,
+    //     title: string,
+    //     comment: string,
+    //     place: string,
+    //     dateOfCreation: Date,
+    //     durationInMonths: number,
+    //     numberOfTeammates: number,
+    //     deleted: boolean,
+    //     appUser: User,
+    //     category: Category) {
+    //         this._idprojectPost = idprojectPost;
+    //         this._appUserId = appUserId;
+    //         this._categoryId = categoryId;
+    //         this._active = active;
+    //         this._title = title;
+    //         this._comment = comment;
+    //         this._place = place;
+    //         this._dateOfCreation = dateOfCreation;
+    //         this._durationInMonths = durationInMonths;
+    //         this._numberOfTeammates = numberOfTeammates;
+    //         this._deleted = deleted;
+    //         this._appUser = appUser;
+    //         this._category = category;
+    // }
+
     // getters
-    get idprojectPost(): number {
+    get idprojectPost(): number | undefined {
         return this._idprojectPost;
     }
     
@@ -127,7 +155,7 @@ export class ProjectPost {
     }
 
     // setters
-    set idprojectPost(idprojectPost: number) {
+    set idprojectPost(idprojectPost: number | undefined) {
         this._idprojectPost = idprojectPost;
     }
     

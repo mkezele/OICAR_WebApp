@@ -22,8 +22,8 @@
                         </div>
                         <div>
                             <section class="d-flex flex-column">
-                                <mat-checkbox i18n checked="true" formControlName="statusActiveCtrl">Active</mat-checkbox>
-                                <mat-checkbox i18n formControlName="statusNotActiveCtrl">Not active</mat-checkbox>
+                                <mat-checkbox i18n checked="true" formControlName="statusActiveCtrl" ngDefaultControl>Active</mat-checkbox>
+                                <mat-checkbox i18n formControlName="statusNotActiveCtrl" ngDefaultControl>Not active</mat-checkbox>
                             </section>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div>
                             <mat-form-field color="accent" appearance="fill">
                                 <mat-label i18n>Category</mat-label>
-                                <mat-select formControlName="categoryCtrl">
+                                <mat-select formControlName="categoryCtrl" ngDefaultControl>
                                    <mat-option 
                                         *ngFor="let category of categories" 
                                         [value]="category.idcategory">

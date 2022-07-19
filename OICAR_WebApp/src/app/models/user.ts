@@ -172,4 +172,8 @@ export class User {
     set userLevel(userLevel: UserLevel) {
         this._userLevel = userLevel;
     }
+
+    set userLevelId(userLevelId: number) {
+        this._userLevelId = userLevelId;
+    }
 }

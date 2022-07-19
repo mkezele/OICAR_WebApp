@@ -24,7 +24,7 @@ export class ReportCreateComponent implements OnInit {
   public stepperOrientation: Observable<StepperOrientation>;
   public reportReason: FormGroup; 
   public reportReasons: ReportReason[];
-  public successfulReportCreation = false;
+  public successfulReportCreation: boolean | undefined = undefined;
   public reportingUser: User | undefined = undefined;
   public reportedUser: User | undefined = undefined;
 

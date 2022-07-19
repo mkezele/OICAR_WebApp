@@ -65,7 +65,7 @@ export class SuspensionService {
 
     // PUT
     updateSuspension(suspension: Suspension): Observable<HttpResponseBase> {
-      return this.http.put<Suspension>(`${GlobalConstants.suspensionsUrl}/${suspension.idsuspension}`, ObjectMapper.serialize(Suspension), this.httpOptions).pipe(
+      return this.http.put<Suspension>(`${GlobalConstants.suspensionsUrl}/${suspension.idsuspension}`, ObjectMapper.serialize(suspension), this.httpOptions).pipe(
         tap(response => {
           if(response.status == HttpStatusCode.NoContent){
             console.log(`Suspension updated.`)

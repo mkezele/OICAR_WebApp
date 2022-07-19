@@ -6,6 +6,7 @@ import { ignoreElements } from 'rxjs';
 import { DialogData } from 'src/app/models/dialog-data';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserLevelService } from 'src/app/services/user-level/user-level.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -25,7 +26,7 @@ export class AppnavComponent implements OnInit {
   @ViewChild("reports", { read: ElementRef }) reports: ElementRef | undefined;
   @ViewChild("suspensions", { read: ElementRef }) suspensions: ElementRef | undefined;
   @ViewChild("logout", { read: ElementRef }) logout: ElementRef | undefined;
-  private navItems: any[];
+  navItems: any[];
   user: User | undefined;
   adminUserLevelId = 2;  
 

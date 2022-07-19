@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
         if(this.user != undefined){
           this.profileService.getUserProjectPosts(this.user?.idappUser).subscribe(postsResult => {
             if(postsResult.body != null){
-              this.projectPosts = postsResult.body.filter(p => p.appUserId == this.user?.idappUser);
+              this.projectPosts = postsResult.body.filter(p => p.appUserId == this.user?.idappUser && p.deleted === false);
               this.projectPosts.sort((a, b) => -compareNumbers(a.dateOfCreation.valueOf(), b.dateOfCreation.valueOf()));
             }  
           });
@@ -70,7 +70,9 @@ export class ProfileComponent implements OnInit {
     );
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.deleteProjectPost(post.idprojectPost);
+        if(post.idprojectPost !== undefined) {
+          this.deleteProjectPost(post.idprojectPost);
+        }
       }
     });
   }

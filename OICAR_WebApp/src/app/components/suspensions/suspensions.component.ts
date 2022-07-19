@@ -39,7 +39,7 @@ export class SuspensionsComponent implements OnInit {
     );
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.deleteSuspension(suspension.idsuspension);
+        this.deleteSuspension(suspension.idsuspension!!);
       }
     });
   }

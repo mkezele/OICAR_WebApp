@@ -115,12 +115,13 @@ export class SuspensionEditComponent implements OnInit {
 
   updateSuspension(): void {
     const suspension = new Suspension(
-      0,
+      this.suspension?.idsuspension!!,
       this.editSuspension.get('usersCtrl')?.value.idappUser,
       this.editSuspension.get('reasonsCtrl')?.value.idreportReason,
       this.editSuspension.get('startDateCtrl')?.value,
       this.editSuspension.get('endDateCtrl')?.value,
     );
+    suspension.idsuspension = this.suspension?.idsuspension;
     this.suspensionService.updateSuspension(suspension).subscribe(result => {
       if(result != undefined && result.status == HttpStatusCode.NoContent){
         this.successfulSuspensionUpdate = true;
@@ -154,7 +155,7 @@ export class SuspensionEditComponent implements OnInit {
 
   deleteSuspension() {
     if(this.suspension != undefined){
-      this.suspensionService.deleteSuspension(this.suspension.idsuspension).subscribe(result => {
+      this.suspensionService.deleteSuspension(this.suspension.idsuspension!!).subscribe(result => {
         if(result != undefined && result.status == HttpStatusCode.NoContent){
           this.successfulSuspensionDeletion = true;
           setTimeout(() => { this.location.back(); }, this.timeout)

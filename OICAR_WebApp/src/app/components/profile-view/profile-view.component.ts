@@ -40,7 +40,7 @@ export class ProfileViewComponent implements OnInit {
         if(this.viewedUser !== undefined){
           this.profileService.getUserProjectPosts(this.viewedUser.idappUser).subscribe(postsResult => {
             if(postsResult.body != null){
-              this.projectPosts = postsResult.body;
+              this.projectPosts = postsResult.body.filter(p => p.deleted === false);
               this.projectPosts.sort((a, b) => -compareNumbers(a.dateOfCreation.valueOf(), b.dateOfCreation.valueOf()));
             }  
           });

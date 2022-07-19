@@ -102,6 +102,8 @@ export class CreateSuspensionComponent implements OnInit {
       if(result != undefined && result.status == HttpStatusCode.Created){
         this.successfulSuspensionCreation = true;
         setTimeout(() => {this.location.back();}, this.timeout);
+      } else {
+        this.successfulSuspensionCreation = false;
       }
     });
   }
